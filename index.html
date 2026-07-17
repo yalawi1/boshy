@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boshra Hijazy — Model &amp; Interior Designer</title>
-  <meta name="description" content="Boshra Hijazy (بُشْرَىٰ بِلال) — modest fashion model and interior designer. Portfolio, brand collaborations, and booking." />
+  <title>Boshra — The Model</title>
+  <meta name="description" content="Boshra Hijazy (بُشْرَىٰ بِلال) — modest fashion model and interior designer. Portfolio &amp; bookings." />
   <link rel="icon" href="assets/img/profile.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -16,21 +16,16 @@
   <!-- Preloader -->
   <div class="preloader" id="preloader">
     <span class="preloader__ar">بُشْرَىٰ</span>
-    <span class="preloader__en">Boshra Hijazy</span>
   </div>
-
-  <!-- Grain overlay -->
-  <div class="grain" aria-hidden="true"></div>
 
   <!-- Header -->
   <header class="header" id="header">
-    <a href="#top" class="header__logo">Boshra<span>Hijazy</span></a>
+    <a href="#top" class="header__logo">Boshra<em>·</em></a>
     <nav class="header__nav" id="nav">
-      <a href="#about">About</a>
-      <a href="#modeling">Modeling</a>
+      <a href="#model">Model</a>
       <a href="#brands">Brands</a>
       <a href="#interiors">Interiors</a>
-      <a href="#contact" class="nav-cta">Book Me</a>
+      <a href="#contact" class="nav-cta">Book</a>
     </nav>
     <button class="header__burger" id="burger" aria-label="Menu">
       <span></span><span></span>
@@ -41,124 +36,58 @@
 
     <!-- ══════════ HERO ══════════ -->
     <section class="hero">
+      <canvas id="silk" class="hero__canvas" aria-hidden="true"></canvas>
       <div class="hero__inner">
-        <div class="hero__text">
-          <p class="hero__eyebrow reveal">Modest Fashion Model &amp; Interior Designer</p>
-          <h1 class="hero__title">
-            <span class="line"><span class="reveal-line">Boshra</span></span>
-            <span class="line line--indent"><span class="reveal-line">Hijazy</span></span>
-          </h1>
-          <p class="hero__ar reveal" lang="ar" dir="rtl">بُشْرَىٰ بِلال</p>
-          <p class="hero__lede reveal">
-            Telling stories of elegance through modest fashion —
-            and shaping spaces that feel like home.
-          </p>
-          <div class="hero__actions reveal">
-            <a href="#modeling" class="btn btn--solid">View Portfolio</a>
-            <a href="https://www.instagram.com/boshrahijazy/" target="_blank" rel="noopener" class="btn btn--ghost">@boshrahijazy</a>
-          </div>
-        </div>
-        <div class="hero__media reveal">
-          <div class="hero__frame" data-parallax="0.12">
-            <img src="assets/img/p01-star.jpg" alt="Boshra Hijazy — editorial portrait" />
-          </div>
-          <div class="hero__badge" aria-hidden="true">
-            <svg viewBox="0 0 120 120" class="badge-rotator">
-              <defs><path id="circlePath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
-              <text><textPath href="#circlePath">MODEL · INTERIOR DESIGNER ·</textPath></text>
-            </svg>
-          </div>
+        <p class="hero__eyebrow reveal">Modest Fashion · Interior Design</p>
+        <h1 class="hero__title">
+          <span class="line"><span class="reveal-line">Boshra</span></span>
+          <span class="line line--accent"><span class="reveal-line">the model</span></span>
+        </h1>
+        <p class="hero__ar reveal" lang="ar" dir="rtl">بُشْرَىٰ بِلال</p>
+        <div class="hero__actions reveal">
+          <a href="#model" class="btn btn--solid">Portfolio</a>
+          <a href="https://www.instagram.com/boshrahijazy/" target="_blank" rel="noopener" class="btn btn--ghost">@boshrahijazy</a>
         </div>
       </div>
-      <a href="#about" class="hero__scroll" aria-label="Scroll down">
-        <span></span>
-      </a>
+      <a href="#model" class="hero__scroll" aria-label="Scroll down"><span></span></a>
     </section>
 
-    <!-- ══════════ ABOUT ══════════ -->
-    <section class="about section" id="about">
+    <!-- ══════════ MODEL ══════════ -->
+    <section class="model section" id="model">
       <div class="section__head reveal">
         <span class="section__num">01</span>
-        <h2 class="section__title">About</h2>
+        <h2 class="section__title">The Model</h2>
       </div>
-      <div class="about__grid">
-        <figure class="about__media reveal">
-          <img src="assets/img/p12-sumaya.jpg" alt="Boshra Hijazy portrait in soft blush tones" loading="lazy" />
+      <p class="model__lede reveal">
+        Editorial calm, modest by design — telling a brand's story
+        in silk, knit and light.
+      </p>
+      <div class="model__cards">
+        <figure class="card3d reveal" data-tilt>
+          <div class="card3d__inner">
+            <img src="assets/img/studio-grey.jpg" alt="Boshra in an oatmeal knit set against sheer curtains" />
+            <figcaption><span>Studio</span>Oat Knit</figcaption>
+          </div>
         </figure>
-        <div class="about__body">
-          <p class="about__big reveal">
-            “Forever grateful for the journey — and proud to be a
-            <em>representative of what modesty means.</em>”
-          </p>
-          <p class="reveal">
-            Boshra is a modest fashion model working with brands across the region,
-            bringing warmth, grace and a distinctly editorial eye to every shoot.
-            Alongside modeling, she practices interior design — curating calm,
-            considered spaces in the same soft, timeless palette she wears.
-          </p>
-          <ul class="about__stats">
-            <li class="reveal"><strong data-count="65">0</strong><span>Published looks</span></li>
-            <li class="reveal"><strong data-count="6">0</strong><span>Brand collaborations</span></li>
-            <li class="reveal"><strong data-count="2">0</strong><span>Creative disciplines</span></li>
-          </ul>
-        </div>
+        <figure class="card3d card3d--offset reveal" data-tilt>
+          <div class="card3d__inner">
+            <img src="assets/img/studio-champagne.jpg" alt="Boshra in a champagne satin abaya with ivory hijab" />
+            <figcaption><span>Studio</span>Champagne Satin</figcaption>
+          </div>
+        </figure>
       </div>
-    </section>
-
-    <!-- ══════════ MODELING ══════════ -->
-    <section class="work section" id="modeling">
-      <div class="section__head reveal">
-        <span class="section__num">02</span>
-        <h2 class="section__title">Modeling</h2>
-        <p class="section__sub">Selected work — campaigns, editorials &amp; collections</p>
-      </div>
-
-      <div class="gallery">
-        <figure class="gallery__item reveal" data-caption="Editorial — houndstooth &amp; smoke">
-          <img src="assets/img/p01-star.jpg" alt="Editorial look in black with grey hijab" loading="lazy" />
-          <figcaption><span>Editorial</span>Houndstooth &amp; Smoke</figcaption>
-        </figure>
-        <figure class="gallery__item reveal" data-caption="Campaign — pleated mocha abaya">
-          <img src="assets/img/p03-glimpse.jpg" alt="Pleated mocha abaya among stone arches" loading="lazy" />
-          <figcaption><span>Campaign</span>Stone Arches</figcaption>
-        </figure>
-        <figure class="gallery__item reveal" data-caption="Tajan Hijab — crimson">
-          <img src="assets/img/p05-tajan.jpg" alt="Crimson hijab styled with black abaya" loading="lazy" />
-          <figcaption><span>Tajan Hijab</span>Crimson Study</figcaption>
-        </figure>
-        <figure class="gallery__item reveal" data-caption="Street — polka dot asymmetry">
-          <img src="assets/img/p06-polka.jpg" alt="Polka dot asymmetrical top, street styling" loading="lazy" />
-          <figcaption><span>Street</span>Polka Dot Asymmetry</figcaption>
-        </figure>
-        <figure class="gallery__item reveal" data-caption="Jude — golden hour">
-          <img src="assets/img/p04-jude.jpg" alt="Golden hour campaign with Jude" loading="lazy" />
-          <figcaption><span>Jude</span>Golden Hour</figcaption>
-        </figure>
-        <figure class="gallery__item reveal" data-caption="Evening — slate chiffon">
-          <img src="assets/img/p09-rm.jpg" alt="Slate blue chiffon evening dress" loading="lazy" />
-          <figcaption><span>Evening</span>Slate Chiffon</figcaption>
-        </figure>
-        <figure class="gallery__item reveal" data-caption="Garden — ivory &amp; blush">
-          <img src="assets/img/p07-ballet.jpg" alt="Ivory dress with blush pink hijab in a garden" loading="lazy" />
-          <figcaption><span>Garden</span>Ivory &amp; Blush</figcaption>
-        </figure>
-        <figure class="gallery__item reveal" data-caption="Silk — cocoa dusk">
-          <img src="assets/img/p10-brown.jpg" alt="Cocoa silk hijab in dappled light" loading="lazy" />
-          <figcaption><span>Silk</span>Cocoa Dusk</figcaption>
-        </figure>
-        <figure class="gallery__item reveal" data-caption="Mirror — espresso">
-          <img src="assets/img/p11-blackcloset.jpg" alt="Mirror self portrait in espresso tones" loading="lazy" />
-          <figcaption><span>Portrait</span>Espresso</figcaption>
-        </figure>
+      <div class="model__stats">
+        <div class="reveal"><strong data-count="65">0</strong><span>Published looks</span></div>
+        <div class="reveal"><strong data-count="6">0</strong><span>Brand campaigns</span></div>
+        <div class="reveal"><strong data-count="2">0</strong><span>Disciplines</span></div>
       </div>
     </section>
 
     <!-- ══════════ BRANDS ══════════ -->
     <section class="brands section" id="brands">
       <div class="section__head reveal">
-        <span class="section__num">03</span>
+        <span class="section__num">02</span>
         <h2 class="section__title">Brands</h2>
-        <p class="section__sub">Collaborations &amp; campaigns</p>
       </div>
       <div class="marquee" aria-label="Brands Boshra has worked with">
         <div class="marquee__track">
@@ -174,39 +103,38 @@
           <a href="https://www.instagram.com/tresor_accessoriies/" target="_blank" rel="noopener">Trésor Accessories</a><i>✦</i>
         </div>
       </div>
-      <p class="brands__note reveal">Tap a name to visit the collaboration.</p>
     </section>
 
     <!-- ══════════ INTERIORS ══════════ -->
     <section class="interiors section" id="interiors">
       <div class="section__head reveal">
-        <span class="section__num">04</span>
+        <span class="section__num">03</span>
         <h2 class="section__title">Interiors</h2>
-        <p class="section__sub">Calm, considered spaces — styled with the same softness</p>
       </div>
       <div class="interiors__grid">
-        <figure class="interiors__media reveal" data-parallax="0.06">
-          <img src="assets/img/p02-camera.jpg" alt="Styled interior vignette with olive branches and blush florals" loading="lazy" />
-        </figure>
+        <div class="interiors__visual reveal" aria-hidden="true">
+          <div class="cube-stage">
+            <div class="cube">
+              <span class="cube__face cube__face--front"></span>
+              <span class="cube__face cube__face--back"></span>
+              <span class="cube__face cube__face--right"></span>
+              <span class="cube__face cube__face--left"></span>
+              <span class="cube__face cube__face--top"></span>
+              <span class="cube__face cube__face--bottom"></span>
+            </div>
+            <div class="cube__shadow"></div>
+          </div>
+        </div>
         <div class="interiors__body">
           <p class="reveal">
-            Interior design is Boshra's second language — neutral palettes, natural
-            textures and light that moves through a room like fabric. From single-room
-            refreshes to full concepts, every space is styled to feel effortless.
+            Boshra's second craft — spaces in the same palette she wears.
+            Wine velvet, blush marble, warm wood; rooms that feel composed,
+            never staged.
           </p>
           <ul class="interiors__services">
-            <li class="reveal">
-              <span class="srv-num">i.</span>
-              <div><h3>Concept &amp; Moodboards</h3><p>A visual direction for your space — palette, mood and materials, distilled into one clear story.</p></div>
-            </li>
-            <li class="reveal">
-              <span class="srv-num">ii.</span>
-              <div><h3>Space Styling</h3><p>Furniture, textiles, florals and objects — arranged, layered and photographed beautifully.</p></div>
-            </li>
-            <li class="reveal">
-              <span class="srv-num">iii.</span>
-              <div><h3>Colour &amp; Material Curation</h3><p>Warm neutrals, stone, linen and wood — combinations that age gracefully.</p></div>
-            </li>
+            <li class="reveal"><span>i.</span><div><h3>Concept &amp; Moodboards</h3><p>One clear visual story — palette, mood, materials.</p></div></li>
+            <li class="reveal"><span>ii.</span><div><h3>Space Styling</h3><p>Furniture, textiles and objects, layered with intent.</p></div></li>
+            <li class="reveal"><span>iii.</span><div><h3>Colour Curation</h3><p>Burgundy, rose and chocolate — combinations that age gracefully.</p></div></li>
           </ul>
           <a href="#contact" class="btn btn--solid reveal">Start a project</a>
         </div>
@@ -216,11 +144,11 @@
     <!-- ══════════ CONTACT ══════════ -->
     <section class="contact section" id="contact">
       <div class="contact__inner">
-        <p class="contact__eyebrow reveal">Bookings · Campaigns · Interior Projects</p>
+        <p class="contact__eyebrow reveal">Bookings · Campaigns · Interiors</p>
         <h2 class="contact__title reveal">Let's create<br /><em>something beautiful</em></h2>
         <div class="contact__actions reveal">
-          <a class="btn btn--solid btn--lg" href="https://ig.me/m/boshrahijazy" target="_blank" rel="noopener">Message on Instagram</a>
-          <a class="btn btn--ghost btn--lg" href="mailto:yalawi88@gmail.com?subject=Booking%20Inquiry%20—%20Boshra%20Hijazy">Email for bookings</a>
+          <a class="btn btn--light btn--lg" href="https://ig.me/m/boshrahijazy" target="_blank" rel="noopener">Message on Instagram</a>
+          <a class="btn btn--outline btn--lg" href="mailto:yalawi88@gmail.com?subject=Booking%20Inquiry%20—%20Boshra">Email</a>
         </div>
         <ul class="contact__links reveal">
           <li><a href="https://www.instagram.com/boshrahijazy/" target="_blank" rel="noopener">Instagram <small>@boshrahijazy</small></a></li>
@@ -232,20 +160,9 @@
 
   <footer class="footer">
     <p lang="ar" dir="rtl" class="footer__ar">غَفَرْتُ لكَ على ما كان فيكَ ولا أُبالِي</p>
-    <p>© <span id="year"></span> Boshra Hijazy — Model &amp; Interior Designer</p>
+    <p>© <span id="year"></span> Boshra — Model &amp; Interior Designer</p>
   </footer>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox__close" id="lbClose" aria-label="Close">×</button>
-    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous">←</button>
-    <figure>
-      <img id="lbImg" src="" alt="" />
-      <figcaption id="lbCap"></figcaption>
-    </figure>
-    <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">→</button>
-  </div>
-
-  <script src="js/main.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

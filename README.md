@@ -10,19 +10,18 @@ Pure HTML / CSS / JS — no build step, no dependencies. Just open `index.html` 
 
 ```
 index.html      — single-page site
-css/style.css   — design system (ivory / espresso / mocha palette)
-js/main.js      — preloader, reveals, parallax, marquee, lightbox, counters
+css/style.css   — design system (burgundy · rose · blush · chocolate · cream palette)
+js/main.js      — preloader, reveals, Three.js hero blob, 3D tilt cards, marquee, counters
 assets/img/     — photography from @boshrahijazy
 ```
 
 ## Sections
 
-1. **Hero** — editorial intro with rotating badge & parallax portrait
-2. **About** — bio + animated stats
-3. **Modeling** — masonry gallery with lightbox (keyboard: ← → Esc)
-4. **Brands** — marquee of collaborations (JUDE, Tajan Hijab, The Black Closet, Sumaya Couture, Trésor Accessories)
-5. **Interiors** — interior design services
-6. **Contact** — Instagram DM + email booking links
+1. **Hero** — typographic intro with a mouse-reactive Three.js silk blob
+2. **The Model** — two studio shots as 3D tilt cards + animated stats
+3. **Brands** — marquee of collaborations (JUDE, Tajan Hijab, The Black Closet, Sumaya Couture, Trésor Accessories)
+4. **Interiors** — CSS 3D cube in the moodboard palette + services
+5. **Contact** — Instagram DM + email booking links
 
 ## Editing
 
