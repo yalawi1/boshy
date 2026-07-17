@@ -51,26 +51,21 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-/* ── Counters ── */
-const counterIO = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = +el.dataset.count;
-      const t0 = performance.now();
-      const tick = (t) => {
-        const p = Math.min((t - t0) / 1400, 1);
-        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-      counterIO.unobserve(el);
+/* ── Brands accordion ── */
+document.querySelectorAll(".brand").forEach((brand) => {
+  const row = brand.querySelector(".brand__row");
+  row.addEventListener("click", () => {
+    const isOpen = brand.classList.contains("is-open");
+    document.querySelectorAll(".brand.is-open").forEach((b) => {
+      b.classList.remove("is-open");
+      b.querySelector(".brand__row").setAttribute("aria-expanded", "false");
     });
-  },
-  { threshold: 0.6 }
-);
-document.querySelectorAll("[data-count]").forEach((el) => counterIO.observe(el));
+    if (!isOpen) {
+      brand.classList.add("is-open");
+      row.setAttribute("aria-expanded", "true");
+    }
+  });
+});
 
 /* ── 3D tilt cards ── */
 const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -181,9 +176,8 @@ async function initSilk() {
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     if (w > 900) {
-      blob.position.set(2.6, 0.1, 0);
-      blob.scale.setScalar(1);
-      material.transparent = false;
+      blob.position.set(3.0, -0.3, 0);
+      blob.scale.setScalar(0.88);
       canvas.style.opacity = "1";
     } else {
       blob.position.set(0, 0.4, 0);
@@ -206,13 +200,17 @@ async function initSilk() {
   new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(hero);
 
   const clock = new THREE.Clock();
-  renderer.setAnimationLoop(() => {
-    if (!visible || document.hidden) return;
+  const frame = () => {
     uniforms.uTime.value = clock.getElapsedTime();
     mx += (tx - mx) * 0.04;
     my += (ty - my) * 0.04;
     blob.rotation.y = mx * 1.4 + uniforms.uTime.value * 0.06;
     blob.rotation.x = my * 1.2;
     renderer.render(scene, camera);
+  };
+  frame(); // paint immediately, even before the first rAF tick
+  renderer.setAnimationLoop(() => {
+    if (!visible) return;
+    frame();
   });
 }

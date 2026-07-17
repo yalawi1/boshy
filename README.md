@@ -18,8 +18,8 @@ assets/img/     — photography from @boshrahijazy
 ## Sections
 
 1. **Hero** — typographic intro with a mouse-reactive Three.js silk blob
-2. **The Model** — two studio shots as 3D tilt cards + animated stats
-3. **Brands** — marquee of collaborations (JUDE, Tajan Hijab, The Black Closet, Sumaya Couture, Trésor Accessories)
+2. **The Model** — two studio shots as 3D tilt cards
+3. **Brands** — expandable accordion per brand (logo, blurb, campaign photo, link): JUDE × Judelle, Tajan Hijab, The Black Closet, Sumaya Couture, Trésor Accessories, Haize the Lable
 4. **Interiors** — CSS 3D cube in the moodboard palette + services
 5. **Contact** — Instagram DM + email booking links
 
