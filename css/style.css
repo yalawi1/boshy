@@ -423,6 +423,34 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   border: 1px solid var(--line);
   box-shadow: 0 30px 60px -35px rgba(41, 36, 38, 0.35);
 }
+.xp { margin-bottom: 2.2rem; }
+.xp__head {
+  font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+  font-weight: 500; color: var(--burgundy);
+  margin-bottom: 1rem;
+}
+.xp__list {
+  list-style: none;
+  border-left: 1px solid var(--line);
+  padding-left: 1.4rem;
+  display: flex; flex-direction: column; gap: 1.1rem;
+}
+.xp__list li { position: relative; }
+.xp__list li::before {
+  content: ""; position: absolute;
+  left: calc(-1.4rem - 4.5px); top: 0.5em;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--rose);
+}
+.xp__list strong {
+  display: block;
+  font-family: var(--serif); font-weight: 500;
+  font-size: 1.1rem; line-height: 1.3;
+}
+.xp__list span {
+  font-size: 0.78rem; letter-spacing: 0.1em;
+  color: var(--chocolate); opacity: 0.75;
+}
 .interiors__actions {
   display: flex; align-items: center; gap: 1.1rem;
 }
