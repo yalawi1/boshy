@@ -22,7 +22,7 @@ Assets and scripts are cache-busted with a `?v=` query in `index.html` — bump 
 1. **Hero** — full-bleed editorial: darkened studio photo, focus-frame crosshair detail, corner labels, and the name **Boshra بُشْرَىٰ** across the bottom
 2. **The Model** — two studio shots as interactive 3D tilt cards
 3. **Brands** — 3D coverflow carousel of brand cards (logo, campaign photo, link) with a booking CTA: JUDE × Judelle, Tajan Hijab, The Black Closet, Sumaya Couture, Trésor Accessories, Haize the Lable
-4. **Interiors — Space Maker** — canvas floor-plan animation (blueprint → furnished home), services, experience timeline, LinkedIn link
+4. **Interiors — Space Maker** — framed canvas floor-plan animation, services, experience/education cards, LinkedIn link
 5. **Contact** — Instagram DM link
 
 ## Editing
