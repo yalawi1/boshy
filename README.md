@@ -10,7 +10,7 @@ Pure HTML / CSS / JS — no build step, no dependencies, no external scripts. Ju
 
 ```
 index.html      — single-page site
-css/style.css   — design system (burgundy · rose · blush · chocolate · cream palette)
+css/style.css   — design system (white · grey · rose pink · charcoal palette)
 js/main.js      — preloader, scroll reveals, hero parallax, brands accordion, 3D tilt cards
 assets/img/     — studio photography + brand logos
 ```
