@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=7" />
+  <link rel="stylesheet" href="css/style.css?v=8" />
 </head>
 <body>
 
@@ -58,8 +58,8 @@
         <span>Interior Design</span>
       </p>
       <p class="hero__side hero__side--right">
-        <span>@boshrahijazy</span>
-        <span>Portfolio</span>
+        <span>Cairo</span>
+        <span>Egypt</span>
       </p>
 
       <h1 class="hero__name">
@@ -177,34 +177,30 @@
     <section class="interiors section" id="interiors">
       <div class="section__head reveal">
         <span class="section__num">03</span>
-        <h2 class="section__title">Interiors</h2>
+        <h2 class="section__title">Space Maker</h2>
+        <p class="section__sub">Dedicated to transforming raw layouts into vibrant homes.</p>
       </div>
       <div class="interiors__grid">
-        <div class="interiors__visual reveal" aria-hidden="true">
-          <div class="cube-stage">
-            <div class="cube">
-              <span class="cube__face cube__face--front"></span>
-              <span class="cube__face cube__face--back"></span>
-              <span class="cube__face cube__face--right"></span>
-              <span class="cube__face cube__face--left"></span>
-              <span class="cube__face cube__face--top"></span>
-              <span class="cube__face cube__face--bottom"></span>
-            </div>
-            <div class="cube__shadow"></div>
-          </div>
+        <div class="interiors__visual reveal">
+          <canvas id="spaceCanvas" width="460" height="500" role="img" aria-label="Animated floor plan turning into a furnished living room"></canvas>
         </div>
         <div class="interiors__body">
           <p class="reveal">
             Boshra's second craft — spaces in the same palette she wears.
-            Wine velvet, blush marble, warm wood; rooms that feel composed,
+            Rose velvet, soft marble, warm wood; rooms that feel composed,
             never staged.
           </p>
           <ul class="interiors__services">
             <li class="reveal"><span>i.</span><div><h3>Concept &amp; Moodboards</h3><p>One clear visual story — palette, mood, materials.</p></div></li>
             <li class="reveal"><span>ii.</span><div><h3>Space Styling</h3><p>Furniture, textiles and objects, layered with intent.</p></div></li>
-            <li class="reveal"><span>iii.</span><div><h3>Colour Curation</h3><p>Burgundy, rose and chocolate — combinations that age gracefully.</p></div></li>
+            <li class="reveal"><span>iii.</span><div><h3>Colour Curation</h3><p>Rose, blush and charcoal — combinations that age gracefully.</p></div></li>
           </ul>
-          <a href="#contact" class="btn btn--solid reveal">Start a project</a>
+          <div class="interiors__actions reveal">
+            <a href="#contact" class="btn btn--solid">Start a project</a>
+            <a class="iconlink" href="https://www.linkedin.com/in/boshra-belal-7276ab41b/" target="_blank" rel="noopener" aria-label="Boshra on LinkedIn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -228,6 +224,6 @@
     <p>© <span id="year"></span> Boshra — Model &amp; Interior Designer</p>
   </footer>
 
-  <script src="js/main.js?v=7"></script>
+  <script src="js/main.js?v=8"></script>
 </body>
 </html>

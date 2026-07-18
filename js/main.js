@@ -187,6 +187,157 @@
     };
   }
 
+  /* ── Interiors: floor plan → furnished home (canvas) ── */
+  const canvas = document.getElementById("spaceCanvas");
+  if (canvas && canvas.getContext) {
+    const ctx = canvas.getContext("2d");
+    const W = 460, H = 500;
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    ctx.scale(dpr, dpr);
+
+    const CHARCOAL = "#444041", PINK = "#c06183", ROSE = "#d9829b",
+          BLUSH = "#eddbe1", GREY = "#b9b5b3", INK = "#292426";
+
+    // wall segments of the plan (outer shell + interior wall with door gap)
+    const walls = [
+      [60, 70, 400, 70], [400, 70, 400, 430], [400, 430, 60, 430],
+      [60, 430, 60, 70],
+      [60, 250, 200, 250], [260, 250, 400, 250], // interior wall + door gap
+    ];
+    const wallLen = walls.reduce((s, w) => s + Math.hypot(w[2] - w[0], w[3] - w[1]), 0);
+
+    const easeOutBack = (t) => 1 + 2.7 * Math.pow(t - 1, 3) + 1.7 * Math.pow(t - 1, 2);
+    const clamp01 = (v) => Math.max(0, Math.min(1, v));
+
+    const roundRect = (x, y, w, h, r) => {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    };
+
+    // each furniture piece: draw(cx-scaled), stagger order
+    const furniture = [
+      { d: () => { // rug (living room, below wall)
+          ctx.fillStyle = BLUSH;
+          ctx.beginPath(); ctx.ellipse(230, 345, 95, 52, 0, 0, Math.PI * 2); ctx.fill();
+        } },
+      { d: () => { // sofa
+          ctx.fillStyle = PINK; roundRect(140, 285, 180, 40, 12); ctx.fill();
+          ctx.fillStyle = ROSE; roundRect(150, 291, 75, 28, 8); ctx.fill();
+          roundRect(235, 291, 75, 28, 8); ctx.fill();
+        } },
+      { d: () => { // coffee table
+          ctx.strokeStyle = INK; ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.arc(230, 372, 20, 0, Math.PI * 2); ctx.stroke();
+          ctx.beginPath(); ctx.arc(230, 372, 7, 0, Math.PI * 2); ctx.stroke();
+        } },
+      { d: () => { // bed (top room)
+          ctx.fillStyle = BLUSH; roundRect(90, 100, 110, 120, 10); ctx.fill();
+          ctx.fillStyle = ROSE; roundRect(98, 108, 44, 30, 6); ctx.fill();
+          roundRect(148, 108, 44, 30, 6); ctx.fill();
+          ctx.fillStyle = PINK; roundRect(90, 160, 110, 60, 10); ctx.fill();
+        } },
+      { d: () => { // dining set (top-right room)
+          ctx.fillStyle = INK;
+          ctx.beginPath(); ctx.arc(320, 160, 30, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = GREY;
+          [[320, 116], [320, 204], [276, 160], [364, 160]].forEach(([x, y]) => {
+            ctx.beginPath(); ctx.arc(x, y, 9, 0, Math.PI * 2); ctx.fill();
+          });
+        } },
+      { d: () => { // plants
+          ctx.fillStyle = ROSE;
+          ctx.beginPath(); ctx.arc(380, 410, 13, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(80, 90, 0.1, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = PINK;
+          ctx.beginPath(); ctx.arc(80, 410, 13, 0, Math.PI * 2); ctx.fill();
+        } },
+    ];
+
+    const drawGrid = (alpha) => {
+      ctx.strokeStyle = `rgba(185, 181, 179, ${0.28 * alpha})`;
+      ctx.lineWidth = 1;
+      for (let x = 20; x < W; x += 40) {
+        ctx.beginPath(); ctx.moveTo(x, 20); ctx.lineTo(x, H - 20); ctx.stroke();
+      }
+      for (let y = 20; y < H; y += 40) {
+        ctx.beginPath(); ctx.moveTo(20, y); ctx.lineTo(W - 20, y); ctx.stroke();
+      }
+    };
+
+    const drawWalls = (p) => {
+      let budget = wallLen * p;
+      ctx.strokeStyle = CHARCOAL;
+      ctx.lineWidth = 5;
+      ctx.lineCap = "round";
+      for (const [x1, y1, x2, y2] of walls) {
+        const len = Math.hypot(x2 - x1, y2 - y1);
+        if (budget <= 0) break;
+        const f = Math.min(1, budget / len);
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x1 + (x2 - x1) * f, y1 + (y2 - y1) * f);
+        ctx.stroke();
+        budget -= len;
+      }
+    };
+
+    const CYCLE = 9000;
+    const render = (now) => {
+      const t = (now % CYCLE) / CYCLE; // 0..1
+      ctx.clearRect(0, 0, W, H);
+
+      // vibrancy glow behind everything once furnished
+      const glow = clamp01((t - 0.62) / 0.18) * (1 - clamp01((t - 0.9) / 0.1));
+      if (glow > 0) {
+        const g = ctx.createRadialGradient(230, 250, 40, 230, 250, 300);
+        g.addColorStop(0, `rgba(237, 219, 225, ${0.5 * glow})`);
+        g.addColorStop(1, "rgba(237, 219, 225, 0)");
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+      }
+
+      const fadeOut = 1 - clamp01((t - 0.93) / 0.07); // reset softly
+      ctx.globalAlpha = fadeOut;
+
+      drawGrid(1 - 0.5 * clamp01((t - 0.3) / 0.2));
+      drawWalls(clamp01(t / 0.28));
+
+      // furniture staggers in from t=0.32
+      furniture.forEach((f, i) => {
+        const p = clamp01((t - 0.32 - i * 0.055) / 0.12);
+        if (p <= 0) return;
+        const s = easeOutBack(p);
+        ctx.save();
+        ctx.globalAlpha = fadeOut * p;
+        ctx.translate(230, 250);
+        ctx.scale(s, s);
+        ctx.translate(-230, -250);
+        f.d();
+        ctx.restore();
+      });
+
+      ctx.globalAlpha = 1;
+    };
+
+    if (prefersReduced) {
+      render(CYCLE * 0.8); // static furnished frame
+    } else {
+      let playing = false, rafId = 0;
+      const loop = (now) => { render(now); rafId = requestAnimationFrame(loop); };
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && !playing) { playing = true; rafId = requestAnimationFrame(loop); }
+        else if (!e.isIntersecting && playing) { playing = false; cancelAnimationFrame(rafId); }
+      }, { threshold: 0.2 }).observe(canvas);
+    }
+  }
+
   /* ── Footer year ── */
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
