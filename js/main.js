@@ -12,9 +12,50 @@
     document.getElementById("preloader")?.classList.add("is-done");
     document.body.classList.add("is-loaded");
   };
-  window.addEventListener("load", () => setTimeout(reveal, 700));
-  // Safety net: never leave the preloader up if `load` is delayed.
-  setTimeout(reveal, 3000);
+
+  /* ── Password gate (client-side; deters casual visitors only) ── */
+  const gate = document.getElementById("gate");
+  const GATE_HASH = "70260742c2952154c84e2ea9f68b1a7397f49b6d343da1ed284093c0bd72c742";
+  const sha256 = async (text) => {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+    return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  };
+  const unlocked = sessionStorage.getItem("boshra-gate") === "open";
+
+  const armPreloader = () => {
+    window.addEventListener("load", () => setTimeout(reveal, 700));
+    if (document.readyState === "complete") setTimeout(reveal, 700);
+    // Safety net: never leave the preloader up if `load` is delayed.
+    setTimeout(reveal, 3000);
+  };
+
+  if (!gate || unlocked || !window.isSecureContext) {
+    // crypto.subtle needs a secure context (https / localhost); fail open
+    if (gate) gate.remove();
+    armPreloader();
+  } else {
+    gate.hidden = false;
+    document.getElementById("preloader")?.classList.add("is-done");
+    const input = document.getElementById("gateInput");
+    const error = document.getElementById("gateError");
+    setTimeout(() => input.focus(), 400);
+    document.getElementById("gateForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      gate.classList.remove("is-wrong");
+      if ((await sha256(input.value.trim())) === GATE_HASH) {
+        sessionStorage.setItem("boshra-gate", "open");
+        gate.classList.add("is-open");
+        error.textContent = "";
+        reveal();
+        setTimeout(() => gate.remove(), 900);
+      } else {
+        error.textContent = "Wrong password — try again";
+        input.value = "";
+        // restart the shake animation
+        requestAnimationFrame(() => gate.classList.add("is-wrong"));
+      }
+    });
+  }
 
   /* ── Header: glass on scroll, hide on scroll-down ── */
   const header = document.getElementById("header");

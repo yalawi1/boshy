@@ -25,6 +25,10 @@ Assets and scripts are cache-busted with a `?v=` query in `index.html` — bump 
 4. **Interiors — Space Maker** — framed canvas floor-plan animation, services, experience/education cards, LinkedIn link
 5. **Contact** — Instagram DM link
 
+## Password gate
+
+The site is gated behind a client-side password screen (session-scoped). The password is not stored in the source — only its SHA-256 hash in `js/main.js` (`GATE_HASH`). To change the password, generate a new hash (`python3 -c "import hashlib;print(hashlib.sha256(b'NEW').hexdigest())"`) and replace the constant. Note: this deters casual visitors only — a static site cannot enforce real authentication.
+
 ## Editing
 
 - **Contact:** the "Message on Instagram" link and Instagram handle live in the `#contact` section of `index.html`.
