@@ -455,9 +455,7 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
 .carousel__dot.is-active { background: var(--burgundy); transform: scale(1.35); }
 .brands__cta {
   text-align: center;
-  margin-top: clamp(3rem, 7vh, 4.5rem);
-  padding-top: clamp(2.4rem, 5vh, 3.5rem);
-  border-top: 1px solid var(--line);
+  margin-top: clamp(2rem, 4vh, 3rem);
 }
 .brands__cta p {
   font-family: var(--serif); font-size: clamp(1.25rem, 2.4vw, 1.7rem);
@@ -540,6 +538,45 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   transition: background 0.3s, color 0.3s, transform 0.3s var(--ease);
 }
 .iconlink:hover { background: var(--burgundy); color: var(--cream); transform: translateY(-2px); }
+
+.interiors__lede strong { font-weight: 500; color: var(--burgundy); }
+
+/* Past work & projects */
+.projects { margin-top: clamp(3rem, 7vh, 4.5rem); }
+.projects__list {
+  list-style: none;
+  border-bottom: 1px solid var(--line);
+}
+.projects__list li {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr auto;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: 1.4rem 0.5rem;
+  border-top: 1px solid var(--line);
+  transition: background 0.35s, padding 0.35s;
+}
+.projects__list li:hover { background: rgba(237, 219, 225, 0.28); padding-left: 1.1rem; }
+.projects__year {
+  font-family: var(--serif); font-style: italic;
+  color: var(--rose); font-size: 1rem;
+}
+.projects__list strong {
+  display: block;
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  line-height: 1.25;
+}
+.projects__list p { font-size: 0.88rem; color: var(--chocolate); opacity: 0.8; }
+.projects__tag {
+  font-style: normal;
+  font-size: 0.64rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--burgundy);
+  border: 1px solid var(--burgundy);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  white-space: nowrap;
+}
 
 /* Experience & education cards */
 .xp { margin-top: clamp(3rem, 7vh, 4.5rem); }
@@ -703,6 +740,14 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   /* Interiors */
   .interiors__panel { padding: 0.8rem; }
   .xp__card { padding: 1.3rem 1.2rem 1.1rem; }
+  .projects__list li {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    row-gap: 0.4rem;
+  }
+  .projects__year { grid-column: 1; }
+  .projects__tag { grid-column: 2; grid-row: 1; }
+  .projects__list li > div { grid-column: 1 / -1; }
 
   /* Type rhythm */
   .section { padding-left: 1.25rem; padding-right: 1.25rem; }
