@@ -11,7 +11,7 @@ Pure HTML / CSS / JS — no build step, no dependencies, no external scripts. Ju
 ```
 index.html      — single-page site
 css/style.css   — design system (white · grey · rose pink · charcoal palette)
-js/main.js      — preloader, scroll reveals, hero parallax, brands accordion, 3D tilt cards
+js/main.js      — preloader, scroll reveals, hero parallax, brands 3D carousel, tilt cards
 assets/img/     — studio photography + brand logos
 ```
 
@@ -21,7 +21,7 @@ Assets and scripts are cache-busted with a `?v=` query in `index.html` — bump 
 
 1. **Hero** — full-bleed editorial: darkened studio photo, focus-frame crosshair detail, corner labels, and the name **Boshra بُشْرَىٰ** across the bottom
 2. **The Model** — two studio shots as interactive 3D tilt cards
-3. **Brands** — expandable accordion per brand (logo, blurb, campaign photo, link): JUDE × Judelle, Tajan Hijab, The Black Closet, Sumaya Couture, Trésor Accessories, Haize the Lable
+3. **Brands** — 3D coverflow carousel of brand cards (logo, campaign photo, link) with a booking CTA: JUDE × Judelle, Tajan Hijab, The Black Closet, Sumaya Couture, Trésor Accessories, Haize the Lable
 4. **Interiors** — CSS 3D cube in the palette + services
 5. **Contact** — Instagram DM link
 

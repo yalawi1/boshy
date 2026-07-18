@@ -64,21 +64,93 @@
   );
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-  /* ── Brands accordion (one open at a time) ── */
-  document.querySelectorAll(".brand").forEach((brand) => {
-    const row = brand.querySelector(".brand__row");
-    row.addEventListener("click", () => {
-      const isOpen = brand.classList.contains("is-open");
-      document.querySelectorAll(".brand.is-open").forEach((b) => {
-        b.classList.remove("is-open");
-        b.querySelector(".brand__row").setAttribute("aria-expanded", "false");
-      });
-      if (!isOpen) {
-        brand.classList.add("is-open");
-        row.setAttribute("aria-expanded", "true");
-      }
+  /* ── Brands 3D carousel ── */
+  const stage = document.getElementById("carouselStage");
+  if (stage) {
+    const cards = [...stage.querySelectorAll(".ccard")];
+    const dotsBox = document.getElementById("carDots");
+    const n = cards.length;
+    let current = 0;
+    let autoTimer = 0;
+
+    // dots
+    const dots = cards.map((_, i) => {
+      const d = document.createElement("button");
+      d.className = "carousel__dot";
+      d.setAttribute("aria-label", `Go to brand ${i + 1}`);
+      d.addEventListener("click", () => goTo(i, true));
+      dotsBox.appendChild(d);
+      return d;
     });
-  });
+
+    const layout = () => {
+      cards.forEach((card, i) => {
+        // shortest signed distance around the ring
+        let off = (i - current) % n;
+        if (off > n / 2) off -= n;
+        if (off < -n / 2) off += n;
+        const abs = Math.abs(off);
+        const x = off * (stage.clientWidth > 700 ? 46 : 58); // % of card width
+        const visible = abs <= 2;
+        card.style.transform =
+          `translate(-50%, -50%) translateX(${x}%) ` +
+          `rotateY(${off * -32}deg) translateZ(${-abs * 130}px)`;
+        card.style.opacity = visible ? String(1 - abs * 0.28) : "0";
+        card.style.filter = abs ? `brightness(${1 - abs * 0.18})` : "none";
+        card.style.zIndex = String(10 - abs);
+        card.style.pointerEvents = visible ? "auto" : "none";
+        card.classList.toggle("is-active", off === 0);
+      });
+      dots.forEach((d, i) => d.classList.toggle("is-active", i === current));
+    };
+
+    const goTo = (i, user) => {
+      current = ((i % n) + n) % n;
+      layout();
+      if (user) restartAuto();
+    };
+
+    const restartAuto = () => {
+      clearInterval(autoTimer);
+      if (!prefersReduced) autoTimer = setInterval(() => goTo(current + 1), 4500);
+    };
+
+    document.getElementById("carPrev").addEventListener("click", () => goTo(current - 1, true));
+    document.getElementById("carNext").addEventListener("click", () => goTo(current + 1, true));
+
+    // click: focus a side card, open the centered one
+    cards.forEach((card, i) => {
+      card.addEventListener("click", () => {
+        if (i !== current) return goTo(i, true);
+        if (card.dataset.url) open(card.dataset.url, "_blank", "noopener");
+      });
+    });
+
+    // drag / swipe
+    let startX = null;
+    stage.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+    addEventListener("pointerup", (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1), true);
+    });
+
+    // keyboard when the carousel is in view
+    addEventListener("keydown", (e) => {
+      const r = stage.getBoundingClientRect();
+      if (r.top > innerHeight || r.bottom < 0) return;
+      if (e.key === "ArrowLeft") goTo(current - 1, true);
+      if (e.key === "ArrowRight") goTo(current + 1, true);
+    });
+
+    stage.addEventListener("mouseenter", () => clearInterval(autoTimer));
+    stage.addEventListener("mouseleave", restartAuto);
+
+    addEventListener("resize", layout);
+    layout();
+    restartAuto();
+  }
 
   /* ── 3D tilt cards ── */
   if (!prefersReduced) {

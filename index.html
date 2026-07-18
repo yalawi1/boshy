@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
 </head>
 <body>
 
@@ -100,127 +100,76 @@
         <span class="section__num">02</span>
         <h2 class="section__title">Brands</h2>
       </div>
-      <div class="brandlist" id="brandlist">
 
-        <div class="brand reveal">
-          <button class="brand__row" aria-expanded="false">
-            <span class="brand__logo"><img src="assets/img/brands/jude.jpg" alt="" loading="lazy" /></span>
-            <span class="brand__name">JUDE <small>× Judelle</small></span>
-            <span class="brand__handle">@jude.eg</span>
-            <span class="brand__icon" aria-hidden="true"></span>
-          </button>
-          <div class="brand__panel">
-            <div class="brand__panel-inner">
-              <div class="brand__about">
-                <p>New-collection campaign in golden hour — swan-print chiffon and soft silks for Jude and its sister line Judelle.</p>
-                <a class="brand__link" href="https://www.instagram.com/jude.eg/" target="_blank" rel="noopener">View the brand →</a>
-              </div>
-              <div class="brand__photos">
-                <img src="assets/img/p04-jude.jpg" alt="Jude campaign — golden hour portrait" loading="lazy" />
-              </div>
+      <div class="carousel reveal" id="carousel" aria-roledescription="carousel" aria-label="Brand collaborations">
+        <div class="carousel__stage" id="carouselStage">
+
+          <article class="ccard" data-url="https://www.instagram.com/jude.eg/">
+            <img class="ccard__photo" src="assets/img/p04-jude.jpg" alt="Jude campaign — golden hour portrait" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo"><img src="assets/img/brands/jude.jpg" alt="" loading="lazy" /></span>
+              <h3>JUDE <small>× Judelle</small></h3>
+              <p>@jude.eg</p>
             </div>
-          </div>
+          </article>
+
+          <article class="ccard" data-url="https://www.instagram.com/tajanhijab/">
+            <img class="ccard__photo" src="assets/img/p05-tajan.jpg" alt="Tajan Hijab campaign — crimson chiffon" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo"><img src="assets/img/brands/tajan.jpg" alt="" loading="lazy" /></span>
+              <h3>Tajan Hijab</h3>
+              <p>@tajanhijab</p>
+            </div>
+          </article>
+
+          <article class="ccard" data-url="https://www.instagram.com/theblackcloset.co/">
+            <img class="ccard__photo" src="assets/img/p11-blackcloset.jpg" alt="The Black Closet — espresso mirror portrait" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo"><img src="assets/img/brands/blackcloset.jpg" alt="" loading="lazy" /></span>
+              <h3>The Black Closet</h3>
+              <p>@theblackcloset.co</p>
+            </div>
+          </article>
+
+          <article class="ccard" data-url="https://www.instagram.com/sumayacouture/">
+            <img class="ccard__photo" src="assets/img/p12-sumaya.jpg" alt="Sumaya Couture — blush pleated set" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo"><img src="assets/img/brands/sumaya.jpg" alt="" loading="lazy" /></span>
+              <h3>Sumaya Couture</h3>
+              <p>@sumayacouture</p>
+            </div>
+          </article>
+
+          <article class="ccard" data-url="https://www.instagram.com/tresor_accessoriies/">
+            <img class="ccard__photo" src="assets/img/p08-tresor.jpg" alt="Trésor Accessories — beading workshop" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo"><img src="assets/img/brands/tresor.jpg" alt="" loading="lazy" /></span>
+              <h3>Trésor Accessories</h3>
+              <p>@tresor_accessoriies</p>
+            </div>
+          </article>
+
+          <article class="ccard">
+            <img class="ccard__photo" src="assets/img/p06-polka.jpg" alt="Haize the Lable — polka dot asymmetrical top" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo ccard__logo--mono">H</span>
+              <h3>Haize the Lable</h3>
+              <p>campaign</p>
+            </div>
+          </article>
+
         </div>
 
-        <div class="brand reveal">
-          <button class="brand__row" aria-expanded="false">
-            <span class="brand__logo"><img src="assets/img/brands/tajan.jpg" alt="" loading="lazy" /></span>
-            <span class="brand__name">Tajan Hijab</span>
-            <span class="brand__handle">@tajanhijab</span>
-            <span class="brand__icon" aria-hidden="true"></span>
-          </button>
-          <div class="brand__panel">
-            <div class="brand__panel-inner">
-              <div class="brand__about">
-                <p>Signature chiffon hijabs — a crimson study against clean studio grey.</p>
-                <a class="brand__link" href="https://www.instagram.com/tajanhijab/" target="_blank" rel="noopener">View the brand →</a>
-              </div>
-              <div class="brand__photos">
-                <img src="assets/img/p05-tajan.jpg" alt="Tajan Hijab campaign — crimson chiffon" loading="lazy" />
-              </div>
-            </div>
-          </div>
+        <div class="carousel__nav">
+          <button class="carousel__btn" id="carPrev" aria-label="Previous brand">←</button>
+          <div class="carousel__dots" id="carDots" role="tablist" aria-label="Brands"></div>
+          <button class="carousel__btn" id="carNext" aria-label="Next brand">→</button>
         </div>
+      </div>
 
-        <div class="brand reveal">
-          <button class="brand__row" aria-expanded="false">
-            <span class="brand__logo"><img src="assets/img/brands/blackcloset.jpg" alt="" loading="lazy" /></span>
-            <span class="brand__name">The Black Closet</span>
-            <span class="brand__handle">@theblackcloset.co</span>
-            <span class="brand__icon" aria-hidden="true"></span>
-          </button>
-          <div class="brand__panel">
-            <div class="brand__panel-inner">
-              <div class="brand__about">
-                <p>Abaya house gatherings and campaigns — espresso tones, marble light.</p>
-                <a class="brand__link" href="https://www.instagram.com/theblackcloset.co/" target="_blank" rel="noopener">View the brand →</a>
-              </div>
-              <div class="brand__photos">
-                <img src="assets/img/p11-blackcloset.jpg" alt="The Black Closet — espresso mirror portrait" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="brand reveal">
-          <button class="brand__row" aria-expanded="false">
-            <span class="brand__logo"><img src="assets/img/brands/sumaya.jpg" alt="" loading="lazy" /></span>
-            <span class="brand__name">Sumaya Couture</span>
-            <span class="brand__handle">@sumayacouture</span>
-            <span class="brand__icon" aria-hidden="true"></span>
-          </button>
-          <div class="brand__panel">
-            <div class="brand__panel-inner">
-              <div class="brand__about">
-                <p>Couture pleats in powder blush — softness with structure.</p>
-                <a class="brand__link" href="https://www.instagram.com/sumayacouture/" target="_blank" rel="noopener">View the brand →</a>
-              </div>
-              <div class="brand__photos">
-                <img src="assets/img/p12-sumaya.jpg" alt="Sumaya Couture — blush pleated set" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="brand reveal">
-          <button class="brand__row" aria-expanded="false">
-            <span class="brand__logo"><img src="assets/img/brands/tresor.jpg" alt="" loading="lazy" /></span>
-            <span class="brand__name">Trésor Accessories</span>
-            <span class="brand__handle">@tresor_accessoriies</span>
-            <span class="brand__icon" aria-hidden="true"></span>
-          </button>
-          <div class="brand__panel">
-            <div class="brand__panel-inner">
-              <div class="brand__about">
-                <p>Hands-on creative sessions — beaded phone cases and gilded details.</p>
-                <a class="brand__link" href="https://www.instagram.com/tresor_accessoriies/" target="_blank" rel="noopener">View the brand →</a>
-              </div>
-              <div class="brand__photos">
-                <img src="assets/img/p08-tresor.jpg" alt="Trésor Accessories — beading workshop" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="brand reveal">
-          <button class="brand__row" aria-expanded="false">
-            <span class="brand__logo brand__logo--mono">H</span>
-            <span class="brand__name">Haize the Lable</span>
-            <span class="brand__handle">campaign</span>
-            <span class="brand__icon" aria-hidden="true"></span>
-          </button>
-          <div class="brand__panel">
-            <div class="brand__panel-inner">
-              <div class="brand__about">
-                <p>Modest ready-to-wear — the polka dot asymmetrical top, styled for the street.</p>
-              </div>
-              <div class="brand__photos">
-                <img src="assets/img/p06-polka.jpg" alt="Haize the Lable — polka dot asymmetrical top" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="brands__cta reveal">
+        <p>Planning a campaign with your brand?</p>
+        <a href="#contact" class="btn btn--solid btn--lg">Book a collaboration</a>
       </div>
     </section>
 
@@ -279,6 +228,6 @@
     <p>© <span id="year"></span> Boshra — Model &amp; Interior Designer</p>
   </footer>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=7"></script>
 </body>
 </html>
