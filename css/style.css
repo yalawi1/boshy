@@ -240,16 +240,6 @@ body.is-loaded .hero__name-en, body.is-loaded .hero__name-ar {
 .hero__name-en { font-family: var(--serif); letter-spacing: -0.02em; }
 .hero__name-ar { font-family: var(--arabic); color: var(--rose); }
 body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
-/* Accent underline sweeping the name */
-.hero__name::after {
-  content: ""; position: absolute;
-  left: clamp(1.5rem, 5vw, 4rem); right: clamp(1.5rem, 5vw, 4rem);
-  bottom: -0.6rem; height: 2px;
-  background: var(--rose);
-  transform: scaleX(0); transform-origin: left;
-  animation: sweep 1.1s var(--ease) 1.1s forwards;
-}
-@keyframes sweep { to { transform: scaleX(1); } }
 
 /* ── Sections ── */
 .section { padding: clamp(5rem, 12vh, 8.5rem) clamp(1.5rem, 5vw, 4rem); max-width: 1250px; margin: 0 auto; }
