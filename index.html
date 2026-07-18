@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boshra — The Model</title>
-  <meta name="description" content="Boshra Hijazy (بُشْرَىٰ بِلال) — modest fashion model and interior designer. Portfolio &amp; bookings." />
+  <title>Boshra — Model &amp; Interior Designer</title>
+  <meta name="description" content="Boshra (بُشْرَىٰ) — modest fashion model and interior designer. Selected work, brand collaborations, and bookings." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yalawi1.github.io/boshy/" />
+  <meta property="og:title" content="Boshra — Model &amp; Interior Designer" />
+  <meta property="og:description" content="Modest fashion model and interior designer. Selected work, brand collaborations, and bookings." />
+  <meta property="og:image" content="https://yalawi1.github.io/boshy/assets/img/studio-champagne.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#34181f" />
   <link rel="icon" href="assets/img/profile.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=4" />
 </head>
 <body>
 
@@ -20,14 +27,15 @@
 
   <!-- Header -->
   <header class="header" id="header">
-    <a href="#top" class="header__logo">Boshra<em>·</em></a>
+    <a href="#top" class="header__logo">B<em>·</em></a>
     <nav class="header__nav" id="nav">
       <a href="#model">Model</a>
       <a href="#brands">Brands</a>
       <a href="#interiors">Interiors</a>
-      <a href="#contact" class="nav-cta">Book</a>
+      <a href="#contact" class="nav__contact">Contact</a>
     </nav>
-    <button class="header__burger" id="burger" aria-label="Menu">
+    <a href="#contact" class="header__cta">Contact</a>
+    <button class="header__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span>
     </button>
   </header>
@@ -36,19 +44,29 @@
 
     <!-- ══════════ HERO ══════════ -->
     <section class="hero">
-      <canvas id="silk" class="hero__canvas" aria-hidden="true"></canvas>
-      <div class="hero__inner">
-        <p class="hero__eyebrow reveal">Modest Fashion · Interior Design</p>
-        <h1 class="hero__title">
-          <span class="line"><span class="reveal-line">Boshra</span></span>
-          <span class="line line--accent"><span class="reveal-line">the model</span></span>
-        </h1>
-        <p class="hero__ar reveal" lang="ar" dir="rtl">بُشْرَىٰ بِلال</p>
-        <div class="hero__actions reveal">
-          <a href="#model" class="btn btn--solid">Portfolio</a>
-          <a href="https://www.instagram.com/boshrahijazy/" target="_blank" rel="noopener" class="btn btn--ghost">@boshrahijazy</a>
-        </div>
+      <div class="hero__bg" data-drift>
+        <img src="assets/img/studio-champagne.jpg" alt="" aria-hidden="true" />
       </div>
+
+      <div class="hero__focus" aria-hidden="true">
+        <img src="assets/img/studio-champagne.jpg" alt="" />
+        <span class="hero__cross">+</span>
+      </div>
+
+      <p class="hero__side hero__side--left">
+        <span>Modest Fashion</span>
+        <span>Interior Design</span>
+      </p>
+      <p class="hero__side hero__side--right">
+        <span>@boshrahijazy</span>
+        <span>Portfolio</span>
+      </p>
+
+      <h1 class="hero__name">
+        <span class="hero__name-en">Boshra</span>
+        <span class="hero__name-ar" lang="ar" dir="rtl">بُشْرَىٰ</span>
+      </h1>
+
       <a href="#model" class="hero__scroll" aria-label="Scroll down"><span></span></a>
     </section>
 
@@ -251,11 +269,9 @@
         <h2 class="contact__title reveal">Let's create<br /><em>something beautiful</em></h2>
         <div class="contact__actions reveal">
           <a class="btn btn--light btn--lg" href="https://ig.me/m/boshrahijazy" target="_blank" rel="noopener">Message on Instagram</a>
-          <a class="btn btn--outline btn--lg" href="mailto:yalawi88@gmail.com?subject=Booking%20Inquiry%20—%20Boshra">Email</a>
         </div>
         <ul class="contact__links reveal">
           <li><a href="https://www.instagram.com/boshrahijazy/" target="_blank" rel="noopener">Instagram <small>@boshrahijazy</small></a></li>
-          <li><a href="mailto:yalawi88@gmail.com">Email <small>yalawi88@gmail.com</small></a></li>
         </ul>
       </div>
     </section>
@@ -266,6 +282,6 @@
     <p>© <span id="year"></span> Boshra — Model &amp; Interior Designer</p>
   </footer>
 
-  <script type="module" src="js/main.js"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>

@@ -1,216 +1,121 @@
-/* Boshra — The Model · interactions + 3D */
+/* Boshra — Model & Interior Designer · interactions */
+(() => {
+  "use strict";
 
-/* ── Preloader ── */
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("preloader").classList.add("is-done");
+  const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Always open at the top (ignore browser scroll restoration on reload) */
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+  /* ── Preloader ── */
+  const reveal = () => {
+    document.getElementById("preloader")?.classList.add("is-done");
     document.body.classList.add("is-loaded");
-  }, 800);
-});
+  };
+  window.addEventListener("load", () => setTimeout(reveal, 700));
+  // Safety net: never leave the preloader up if `load` is delayed.
+  setTimeout(reveal, 3000);
 
-/* ── Header ── */
-const header = document.getElementById("header");
-let lastY = 0;
-window.addEventListener("scroll", () => {
-  const y = window.scrollY;
-  header.classList.toggle("is-scrolled", y > 40);
-  header.classList.toggle("is-hidden", y > 300 && y > lastY);
-  lastY = y;
-}, { passive: true });
-
-/* ── Mobile nav ── */
-const burger = document.getElementById("burger");
-const nav = document.getElementById("nav");
-burger.addEventListener("click", () => {
-  burger.classList.toggle("is-open");
-  nav.classList.toggle("is-open");
-});
-nav.querySelectorAll("a").forEach((a) =>
-  a.addEventListener("click", () => {
-    burger.classList.remove("is-open");
-    nav.classList.remove("is-open");
-  })
-);
-
-/* ── Reveal on scroll ── */
-const io = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const siblings = [...el.parentElement.children].filter((c) =>
-        c.classList.contains("reveal")
-      );
-      const idx = Math.max(0, siblings.indexOf(el));
-      el.style.transitionDelay = `${Math.min(idx * 90, 450)}ms`;
-      el.classList.add("is-visible");
-      io.unobserve(el);
-    });
-  },
-  { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
-);
-document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-
-/* ── Brands accordion ── */
-document.querySelectorAll(".brand").forEach((brand) => {
-  const row = brand.querySelector(".brand__row");
-  row.addEventListener("click", () => {
-    const isOpen = brand.classList.contains("is-open");
-    document.querySelectorAll(".brand.is-open").forEach((b) => {
-      b.classList.remove("is-open");
-      b.querySelector(".brand__row").setAttribute("aria-expanded", "false");
-    });
-    if (!isOpen) {
-      brand.classList.add("is-open");
-      row.setAttribute("aria-expanded", "true");
-    }
-  });
-});
-
-/* ── 3D tilt cards ── */
-const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-if (!prefersReduced) {
-  document.querySelectorAll("[data-tilt]").forEach((card) => {
-    const inner = card.querySelector(".card3d__inner");
-    card.addEventListener("mousemove", (e) => {
-      const r = card.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
-      inner.style.transform = `rotateY(${px * 10}deg) rotateX(${py * -10}deg) translateZ(12px)`;
-    });
-    card.addEventListener("mouseleave", () => {
-      inner.style.transform = "rotateY(0deg) rotateX(0deg) translateZ(0)";
-    });
-  });
-}
-
-/* ── Footer year ── */
-document.getElementById("year").textContent = new Date().getFullYear();
-
-/* ── Hero: silk blob (Three.js) ── */
-if (!prefersReduced) initSilk();
-
-async function initSilk() {
-  let THREE;
-  try {
-    THREE = await import("https://unpkg.com/three@0.160.0/build/three.module.js");
-  } catch {
-    return; // offline or CDN blocked — hero stays typographic
+  /* ── Header: glass on scroll, hide on scroll-down ── */
+  const header = document.getElementById("header");
+  let lastY = 0;
+  if (header) {
+    addEventListener("scroll", () => {
+      const y = scrollY;
+      header.classList.toggle("is-scrolled", y > 40);
+      header.classList.toggle("is-hidden", y > 300 && y > lastY);
+      lastY = y;
+    }, { passive: true });
   }
 
-  const canvas = document.getElementById("silk");
-  let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  } catch {
-    canvas.style.display = "none";
-    return;
+  /* ── Mobile nav ── */
+  const burger = document.getElementById("burger");
+  const nav = document.getElementById("nav");
+  if (burger && nav) {
+    const closeNav = () => {
+      burger.classList.remove("is-open");
+      nav.classList.remove("is-open");
+      burger.setAttribute("aria-expanded", "false");
+    };
+    burger.addEventListener("click", () => {
+      const open = burger.classList.toggle("is-open");
+      nav.classList.toggle("is-open", open);
+      burger.setAttribute("aria-expanded", String(open));
+    });
+    nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
   }
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 50);
-  camera.position.z = 7;
+  /* ── Reveal on scroll (staggered) ── */
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const siblings = [...el.parentElement.children].filter((c) =>
+          c.classList.contains("reveal")
+        );
+        const idx = Math.max(0, siblings.indexOf(el));
+        el.style.transitionDelay = `${Math.min(idx * 90, 450)}ms`;
+        el.classList.add("is-visible");
+        io.unobserve(el);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+  );
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-  // Palette from the moodboard
-  const uniforms = {
-    uTime: { value: 0 },
-    uBurgundy: { value: new THREE.Color("#7e2039") },
-    uRose: { value: new THREE.Color("#d9829b") },
-    uBlush: { value: new THREE.Color("#ddc6c1") },
-  };
-
-  const material = new THREE.ShaderMaterial({
-    uniforms,
-    vertexShader: /* glsl */ `
-      uniform float uTime;
-      varying vec3 vNormal;
-      varying vec3 vView;
-      varying float vDisp;
-
-      float wave(vec3 p, float f, float s) {
-        return sin(p.x * f + uTime * s) * sin(p.y * f * 1.3 + uTime * s * 0.8) * sin(p.z * f * 0.9 + uTime * s * 1.1);
+  /* ── Brands accordion (one open at a time) ── */
+  document.querySelectorAll(".brand").forEach((brand) => {
+    const row = brand.querySelector(".brand__row");
+    row.addEventListener("click", () => {
+      const isOpen = brand.classList.contains("is-open");
+      document.querySelectorAll(".brand.is-open").forEach((b) => {
+        b.classList.remove("is-open");
+        b.querySelector(".brand__row").setAttribute("aria-expanded", "false");
+      });
+      if (!isOpen) {
+        brand.classList.add("is-open");
+        row.setAttribute("aria-expanded", "true");
       }
-
-      void main() {
-        float d = 0.28 * wave(position, 1.6, 0.55)
-                + 0.12 * wave(position, 3.2, 0.85)
-                + 0.05 * wave(position, 6.0, 1.2);
-        vDisp = d;
-        vec3 p = position + normal * d;
-        vec4 mv = modelViewMatrix * vec4(p, 1.0);
-        vNormal = normalize(normalMatrix * normal);
-        vView = normalize(-mv.xyz);
-        gl_Position = projectionMatrix * mv;
-      }
-    `,
-    fragmentShader: /* glsl */ `
-      uniform vec3 uBurgundy;
-      uniform vec3 uRose;
-      uniform vec3 uBlush;
-      varying vec3 vNormal;
-      varying vec3 vView;
-      varying float vDisp;
-
-      void main() {
-        float fresnel = pow(1.0 - max(dot(normalize(vNormal), normalize(vView)), 0.0), 2.0);
-        float band = smoothstep(-0.35, 0.4, vDisp);
-        vec3 base = mix(uBurgundy, uRose, band);
-        vec3 col = mix(base, uBlush, fresnel * 0.85);
-        float sheen = pow(max(dot(normalize(vNormal), normalize(vec3(0.4, 0.7, 0.6))), 0.0), 6.0);
-        col += sheen * 0.18;
-        gl_FragColor = vec4(col, 1.0);
-      }
-    `,
+    });
   });
 
-  const blob = new THREE.Mesh(new THREE.IcosahedronGeometry(1.9, 96), material);
-  scene.add(blob);
+  /* ── 3D tilt cards ── */
+  if (!prefersReduced) {
+    document.querySelectorAll("[data-tilt]").forEach((card) => {
+      const inner = card.querySelector(".card3d__inner");
+      card.addEventListener("mousemove", (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        inner.style.transform = `rotateY(${px * 10}deg) rotateX(${py * -10}deg) translateZ(12px)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        inner.style.transform = "rotateY(0deg) rotateX(0deg) translateZ(0)";
+      });
+    });
+  }
 
-  // Sizing: keep the blob right-of-center on wide screens, behind text on small
-  const hero = document.querySelector(".hero");
-  const resize = () => {
-    const w = hero.clientWidth;
-    const h = hero.clientHeight;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-    if (w > 900) {
-      blob.position.set(3.0, -0.3, 0);
-      blob.scale.setScalar(0.88);
-      canvas.style.opacity = "1";
-    } else {
-      blob.position.set(0, 0.4, 0);
-      blob.scale.setScalar(0.8);
-      canvas.style.opacity = "0.35";
-    }
-  };
-  resize();
-  addEventListener("resize", resize);
+  /* ── Hero backdrop drift (subtle parallax on pointer) ── */
+  const drift = document.querySelector("[data-drift] img");
+  if (drift && !prefersReduced && matchMedia("(pointer: fine)").matches) {
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+    addEventListener("pointermove", (e) => {
+      tx = (e.clientX / innerWidth - 0.5) * 18;
+      ty = (e.clientY / innerHeight - 0.5) * 18;
+      if (!raf) raf = requestAnimationFrame(step);
+    }, { passive: true });
+    const step = () => {
+      cx += (tx - cx) * 0.06;
+      cy += (ty - cy) * 0.06;
+      drift.style.transform = `scale(1.12) translate(${cx}px, ${cy}px)`;
+      raf = Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1
+        ? requestAnimationFrame(step)
+        : 0;
+    };
+  }
 
-  // Mouse drift
-  let mx = 0, my = 0, tx = 0, ty = 0;
-  addEventListener("pointermove", (e) => {
-    tx = (e.clientX / innerWidth - 0.5) * 0.5;
-    ty = (e.clientY / innerHeight - 0.5) * 0.35;
-  }, { passive: true });
-
-  // Only render while the hero is on screen
-  let visible = true;
-  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(hero);
-
-  const clock = new THREE.Clock();
-  const frame = () => {
-    uniforms.uTime.value = clock.getElapsedTime();
-    mx += (tx - mx) * 0.04;
-    my += (ty - my) * 0.04;
-    blob.rotation.y = mx * 1.4 + uniforms.uTime.value * 0.06;
-    blob.rotation.x = my * 1.2;
-    renderer.render(scene, camera);
-  };
-  frame(); // paint immediately, even before the first rAF tick
-  renderer.setAnimationLoop(() => {
-    if (!visible) return;
-    frame();
-  });
-}
+  /* ── Footer year ── */
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+})();
