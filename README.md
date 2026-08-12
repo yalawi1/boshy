@@ -2,7 +2,12 @@
 
 Personal portfolio for **Boshra** (بُشْرَىٰ) — modest fashion model & interior designer.
 
-**Live:** enable GitHub Pages (Settings → Pages → Deploy from branch → `main`, root) and the site will be served at `https://yalawi1.github.io/boshy/`.
+**Live:** https://boshrabelal.com
+
+**Hosting note:** Netlify's edge is blocked by Egyptian ISPs, so the site must be served
+from a host that is reachable in Egypt (Cloudflare Pages preferred — it has a Cairo PoP;
+GitHub Pages works too). `CNAME` and `.nojekyll` in the repo root are for the GitHub Pages
+path; Cloudflare Pages ignores them. Build settings: none — static site, publish the repo root.
 
 ## Stack
 

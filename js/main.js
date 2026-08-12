@@ -59,11 +59,12 @@
 
   /* ── Header: glass on scroll, hide on scroll-down ── */
   const header = document.getElementById("header");
+  const isSubpage = document.body.classList.contains("subpage");
   let lastY = 0;
   if (header) {
     addEventListener("scroll", () => {
       const y = scrollY;
-      header.classList.toggle("is-scrolled", y > 40);
+      header.classList.toggle("is-scrolled", isSubpage || y > 40);
       header.classList.toggle("is-hidden", y > 300 && y > lastY);
       lastY = y;
     }, { passive: true });
