@@ -1121,88 +1121,35 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 45%, #000 25%, transparent 80%);
 }
 .ifeature__inner { position: relative; z-index: 1; max-width: 1250px; margin: 0 auto; }
-.ifeature__head { max-width: 52ch; margin-bottom: clamp(2.5rem, 6vh, 4rem); }
+.ifeature__head { max-width: 52ch; margin: 0 auto clamp(2.5rem, 6vh, 3.5rem); text-align: center; }
 .ifeature__head .section__title em { color: var(--burgundy); font-style: italic; font-weight: 400; }
 .ifeature__lede {
-  margin-top: 1.2rem;
+  margin: 1.2rem auto 0;
   font-size: 1.02rem; color: var(--chocolate);
   max-width: 48ch;
 }
 
-/* fusion collage */
-.fusion {
-  position: relative;
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr 0.7fr;
-  grid-template-rows: auto auto;
-  gap: clamp(1rem, 2.5vw, 2rem);
-  align-items: center;
-  margin-bottom: clamp(3rem, 7vh, 4.5rem);
-}
-.fusion__photo, .fusion__plan { margin: 0; border-radius: 1.1rem; overflow: hidden; }
-.fusion__photo {
-  aspect-ratio: 3 / 4;
-  box-shadow: 0 30px 60px -34px rgba(41, 36, 38, 0.5);
-  will-change: transform;
-}
-.fusion__photo img { width: 100%; height: 100%; object-fit: cover; }
-.fusion__photo--small {
-  aspect-ratio: 3 / 3.4;
-  align-self: end;
-}
-.fusion__plan {
-  position: relative;
+/* single plan, centred */
+.ifeature__plan {
+  margin: 0 auto clamp(2.5rem, 6vh, 3.5rem);
+  max-width: 460px;
   background: #fff;
   border: 1px solid var(--line);
+  border-radius: 1.1rem;
   padding: 0.9rem;
   box-shadow: 0 34px 66px -38px rgba(41, 36, 38, 0.45);
-  will-change: transform;
 }
-.fusion__plan canvas {
+.ifeature__plan canvas {
   width: 100%; aspect-ratio: 460 / 500;
   display: block; border-radius: 0.6rem;
   background: var(--cream);
 }
-.fusion__plan figcaption {
-  padding-top: 0.7rem;
+.ifeature__plan figcaption {
+  padding-top: 0.8rem;
   font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase;
   color: var(--burgundy); text-align: center;
 }
-.fusion__swatches {
-  grid-column: 1 / 2; grid-row: 2;
-  display: flex; gap: 0.5rem; padding-top: 0.4rem;
-}
-.fusion__swatches span {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: var(--c);
-  border: 1px solid rgba(68,64,65,0.12);
-}
-.fusion__quote {
-  grid-column: 2 / 4; grid-row: 2;
-  font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.25rem);
-  line-height: 1.5; color: var(--chocolate);
-}
-.fusion__quote span {
-  display: block;
-  font-family: var(--arabic); font-size: 1.5rem;
-  color: var(--rose); margin-bottom: 0.2rem;
-}
-.ifeature__stats {
-  display: flex; flex-wrap: wrap; gap: clamp(2rem, 6vw, 4.5rem);
-  padding-top: 2rem; margin-bottom: 2.4rem;
-  border-top: 1px solid var(--line);
-}
-.ifeature__stats strong {
-  display: block; line-height: 1;
-  font-family: var(--serif); font-weight: 500;
-  font-size: clamp(1.9rem, 4vw, 2.8rem);
-  color: var(--burgundy);
-}
-.ifeature__stats span {
-  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--chocolate);
-}
-.ifeature__actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+.ifeature__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
 
 /* ── Interiors page: on-set strip ── */
 .onset { border-top: 1px solid var(--line); }
@@ -1253,12 +1200,6 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .ggrid { columns: 2; }
-
-  /* Interiors feature: stack the collage */
-  .fusion { grid-template-columns: 1fr 1fr; }
-  .fusion__plan { grid-column: 1 / -1; order: -1; }
-  .fusion__swatches { grid-column: 1 / -1; grid-row: auto; }
-  .fusion__quote { grid-column: 1 / -1; grid-row: auto; }
 
   /* Interiors page */
   .ihero { grid-template-columns: 1fr; padding-top: clamp(6.5rem, 13vh, 9rem); }
@@ -1337,13 +1278,6 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
 
 @media (max-width: 640px) {
   .model__cards { grid-template-columns: 1fr; max-width: 420px; }
-
-  /* ── Interiors feature: one clean column ── */
-  .fusion { grid-template-columns: 1fr; gap: 1rem; }
-  .fusion__photo--small { display: none; }   /* keep it light on phones */
-  .fusion__swatches { justify-content: flex-start; }
-  .fusion__swatches span { width: 26px; height: 26px; }
-  .ifeature__stats { gap: 1.4rem 2.2rem; }
   .ifeature__actions .btn { width: 100%; text-align: center; }
 
   /* ── Interiors page: simpler, faster, conversion first ── */
