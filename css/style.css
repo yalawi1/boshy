@@ -150,13 +150,28 @@ ul { list-style: none; }
 }
 .header.is-hidden { transform: translateY(-110%); }
 .header__logo {
-  font-family: var(--serif);
-  font-size: 1.6rem; font-weight: 600;
+  position: relative;
   justify-self: start;
-  letter-spacing: 0.04em;
+  display: inline-flex; flex-direction: column; align-items: center;
+  line-height: 1;
+  padding-bottom: 0.55rem;   /* room for the dot below the letter */
 }
-.header__logo em { color: var(--rose); font-style: normal; }
-.header.is-scrolled .header__logo em { color: var(--burgundy); }
+.header__logo-b {
+  font-family: var(--serif);
+  font-size: 1.7rem; font-weight: 600;
+  letter-spacing: 0.02em;
+}
+/* the dot sits under the letter and centred, the way baa (ب) is dotted */
+.header__logo-dot {
+  position: absolute; left: 50%; bottom: 0;
+  transform: translateX(-50%);
+  width: 9px; height: 9px;
+  border-radius: 1px;
+  background: var(--rose);
+  transition: background 0.35s, transform 0.35s var(--ease);
+}
+.header.is-scrolled .header__logo-dot { background: var(--burgundy); }
+.header__logo:hover .header__logo-dot { transform: translateX(-50%) scale(1.35); }
 .header__nav {
   display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.4rem);
   justify-self: center;
@@ -1208,6 +1223,46 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   font-size: 0.9rem; color: var(--chocolate);
 }
 .start__alt a { color: var(--burgundy); border-bottom: 1px solid currentColor; }
+
+
+/* ── Project tabs ── */
+.ptabs {
+  display: flex; flex-wrap: wrap; gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.ptab {
+  font-family: var(--sans); font-size: 0.74rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: none; color: var(--chocolate);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s var(--ease);
+}
+.ptab:hover { border-color: var(--burgundy); color: var(--burgundy); transform: translateY(-1px); }
+.ptab.is-active { background: var(--burgundy); border-color: var(--burgundy); color: #fff; }
+.ppanel { display: none; margin-bottom: 0; }
+.ppanel.is-active { display: block; animation: panelIn 0.5s var(--ease) both; }
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Experience card logos ── */
+.xp__card { position: relative; }
+.xp__logo {
+  position: absolute; top: 1.1rem; right: 1.1rem;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  padding: 4px;
+}
+.xp__logo img { width: 100%; height: 100%; object-fit: contain; }
+.xp__card strong, .xp__card p { padding-right: 3.2rem; }
 
 /* ── Reveal on scroll ── */
 .reveal {

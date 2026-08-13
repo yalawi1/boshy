@@ -422,6 +422,28 @@
     if (img.complete && img.naturalWidth === 0) fail();
   });
 
+  /* ── Project tabs ── */
+  const tabs = [...document.querySelectorAll(".ptab")];
+  if (tabs.length) {
+    const panels = [...document.querySelectorAll(".ppanel")];
+    const show = (id) => {
+      tabs.forEach((t) => {
+        const on = t.dataset.panel === id;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", String(on));
+      });
+      panels.forEach((p) => p.classList.toggle("is-active", p.id === id));
+      // the drawings inside a freshly shown panel may still be lazy
+      document.querySelectorAll(`#${id} .shot img`).forEach((img) => {
+        if (!img.complete && img.loading === "lazy") img.loading = "eager";
+      });
+    };
+    tabs.forEach((t) => t.addEventListener("click", () => show(t.dataset.panel)));
+    // deep link: interiors.html#thamra
+    const hash = location.hash.slice(1);
+    if (hash && panels.some((p) => p.id === hash)) show(hash);
+  }
+
   /* ── Fusion collage: gentle parallax float on scroll ── */
   const floats = [...document.querySelectorAll("[data-float]")];
   if (floats.length && !prefersReduced && matchMedia("(min-width: 641px)").matches) {

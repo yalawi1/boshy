@@ -10,12 +10,12 @@
   <meta property="og:title" content="Interiors · Boshra" />
   <meta property="og:description" content="A space maker turning raw layouts into vibrant homes." />
   <meta name="theme-color" content="#292426" />
-  <link rel="icon" href="assets/favicon.svg?v=13" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="assets/favicon.svg?v=13" />
+  <link rel="icon" href="assets/favicon.svg?v=27" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg?v=27" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=25" />
+  <link rel="stylesheet" href="css/style.css?v=27" />
 </head>
 <body class="subpage interiors-page">
 
@@ -35,7 +35,7 @@
 
   <!-- Header -->
   <header class="header is-scrolled" id="header">
-    <a href="index.html" class="header__logo">B<em>·</em></a>
+    <a href="index.html" class="header__logo" aria-label="Boshra, home"><span class="header__logo-b">B</span><span class="header__logo-dot" aria-hidden="true"></span></a>
     <nav class="header__nav" id="nav">
       <a href="index.html">Home</a>
       <a href="gallery.html">Gallery</a>
@@ -112,8 +112,15 @@
         <p class="section__sub">Studies across retail, home and workplace. Reference images are samples while the final drawings are prepared.</p>
       </div>
 
-      <!-- Project: Thamra -->
-      <article class="project reveal" id="thamra">
+      <div class="ptabs reveal" role="tablist" aria-label="Projects">
+          <button class="ptab is-active" data-panel="thamra" role="tab" aria-selected="true">Thamra</button>
+          <button class="ptab" data-panel="seda" role="tab" aria-selected="false">SEDA</button>
+          <button class="ptab" data-panel="residential" role="tab" aria-selected="false">Residential concept</button>
+          <button class="ptab" data-panel="workplace" role="tab" aria-selected="false">Workplace study</button>
+      </div>
+
+      <div class="ppanels reveal">
+        <article class="project ppanel is-active" id="thamra" role="tabpanel">
         <header class="project__head">
           <div>
             <h3 class="project__title">Thamra</h3>
@@ -140,10 +147,8 @@
             <figcaption><span>Sections</span>Elevations, perspective and moodboard</figcaption>
           </figure>
         </div>
-      </article>
-
-      <!-- Project: SEDA -->
-      <article class="project reveal" id="seda">
+        </article>
+        <article class="project ppanel" id="seda" role="tabpanel">
         <header class="project__head">
           <div>
             <h3 class="project__title">SEDA</h3>
@@ -162,10 +167,8 @@
             <figcaption><span>Board set</span>Elevation, perspective, plan and sections</figcaption>
           </figure>
         </div>
-      </article>
-
-      <!-- Project: Residential -->
-      <article class="project reveal" id="residential">
+        </article>
+        <article class="project ppanel" id="residential" role="tabpanel">
         <header class="project__head">
           <div>
             <h3 class="project__title">Residential concept</h3>
@@ -183,10 +186,8 @@
             <figcaption><span>Reference</span>Residential feel, sample image</figcaption>
           </figure>
         </div>
-      </article>
-
-      <!-- Project: Workplace -->
-      <article class="project reveal" id="workplace">
+        </article>
+        <article class="project ppanel" id="workplace" role="tabpanel">
         <header class="project__head">
           <div>
             <h3 class="project__title">Workplace study</h3>
@@ -204,9 +205,9 @@
             <figcaption><span>Reference</span>Workplace feel, sample image</figcaption>
           </figure>
         </div>
-      </article>
+        </article>
+      </div>
     </section>
-
 
     <!-- ══════════ SERVICES ══════════ -->
     <section class="section services">
@@ -234,16 +235,19 @@
             <span class="xp__year">2026</span>
             <strong>Interior Designer</strong>
             <p>PETROJET, internship. Office and workplace interiors.</p>
+            <span class="xp__logo"><img src="assets/img/xp/petrojet.png" alt="" loading="lazy" /></span>
           </article>
           <article class="xp__card reveal">
             <span class="xp__year">2025</span>
             <strong>Interior Designer</strong>
             <p>Studio34.Cairo, internship. Residential concepts and styling.</p>
+            <span class="xp__logo"><img src="assets/img/xp/studio34.jpg" alt="" loading="lazy" /></span>
           </article>
           <article class="xp__card reveal">
             <span class="xp__year">2023 to 2028</span>
             <strong>BA Applied Arts, Interior Design</strong>
             <p>October 6 University.</p>
+            <span class="xp__logo"><img src="assets/img/xp/o6u.jpg" alt="" loading="lazy" /></span>
           </article>
         </div>
         <a class="iconlink reveal" href="https://www.linkedin.com/in/boshra-belal-7276ab41b/" target="_blank" rel="noopener" aria-label="Boshra on LinkedIn">
@@ -266,7 +270,7 @@
 
         <div class="start__actions reveal">
           <a class="btn btn--solid btn--lg"
-             href="https://cotton-mole-50d.notion.site/3bbeed92101c80edad5cf53540855c5d"
+             href="https://cotton-mole-50d.notion.site/3bbeed92101c80edad5cf53540855c5d?pvs=105"
              target="_blank" rel="noopener">Open the project form</a>
           <a class="btn btn--ghost btn--lg" href="https://ig.me/m/boshrahijazy" target="_blank" rel="noopener">Message on Instagram</a>
         </div>
@@ -291,7 +295,7 @@
     <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">→</button>
   </div>
 
-  <script src="js/main.js?v=25"></script>
-  <script src="js/gallery.js?v=25"></script>
+  <script src="js/main.js?v=27"></script>
+  <script src="js/gallery.js?v=27"></script>
 </body>
 </html>
