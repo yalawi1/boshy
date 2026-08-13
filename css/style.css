@@ -1199,6 +1199,31 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   border-color: var(--burgundy); transform: translateY(-2px);
 }
 
+/* About on laptops and up: heading left, the story right, instead of one
+   narrow column with an empty right half */
+@media (min-width: 901px) {
+  .model {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    column-gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .model .section__head {
+    grid-column: 1; grid-row: 1;
+    margin-bottom: 0;
+    position: sticky; top: 7rem;
+  }
+  .model__about {
+    grid-column: 2; grid-row: 1;
+    max-width: none;
+    margin-bottom: 1.8rem;
+  }
+  .model__actions {
+    grid-column: 2; grid-row: 2;
+    margin-top: 0;
+  }
+}
+
 /* Interiors on laptops and up: text left, plan right, instead of one tall column */
 @media (min-width: 901px) {
   .ifeature__inner {
