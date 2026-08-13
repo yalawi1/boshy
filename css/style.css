@@ -51,10 +51,6 @@ ul { list-style: none; }
 }
 .header:not(.is-scrolled) :focus-visible { outline-color: var(--cream); }
 
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--cream-2); }
-::-webkit-scrollbar-thumb { background: var(--burgundy); border-radius: 8px; }
-
 /* ── Password gate ── */
 .gate {
   position: fixed; inset: 0; z-index: 1200;
