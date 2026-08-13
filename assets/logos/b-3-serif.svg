@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- b-3 Serif: weighted stem with a pen flag, bowl with contrast, hull flattened underneath -->
+  <g fill="#faf7f4">
+    <path d="M15.5 11.2 C18.6 8.2 23.4 7.4 25.2 9.2 L25.2 44 L18.2 44 L18.2 13.4
+             C17.2 12.1 14.9 12.6 15.5 11.2 z"/>
+    <path d="M25.2 29.6 C32.4 26.9 42.4 28.2 46.8 32.9 C51.2 37.6 49.4 44.4 42.6 46.7
+             C36 48.9 27.9 47.4 25.2 44 C30 45.6 36.9 45.6 40.7 43.3 C44.6 41 44.5 36.2 41 33.7
+             C37.4 31.2 30.4 30.8 25.2 32.5 z"/>
+  </g>
+  <path d="M33.5 52 l5 5 -5 5 -5 -5 z" fill="#c06183"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Concept 2 · Baa: the stem falls into the bowl and lifts on the right, one continuous letter -->
+  <g fill="none" stroke="#faf7f4" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- stem drops, runs flat, then hooks up the way baa finishes -->
+    <path d="M18 11 V33 C18 41 26 44 34 44 C44 44 49 40 50 31"/>
+    <!-- the two bowls of the B, held above the sweep -->
+    <path d="M18 11 H27 a6.2 6.2 0 0 1 0 12.4 H18"/>
+    <path d="M18 23.4 H29 a6.4 6.4 0 0 1 1 12.6"/>
+  </g>
+  <path d="M33 50 l5 5 -5 5 -5 -5 z" fill="#c06183"/>
+</svg>

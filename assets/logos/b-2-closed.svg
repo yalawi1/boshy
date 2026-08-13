@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- b-2 Closed boat: a true lowercase b whose bowl is flattened into a baa hull -->
+  <g fill="none" stroke="#faf7f4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 9 V45" stroke-width="6"/>
+    <path d="M20 31 H35 C43 31 47 34.5 47 38.5 C47 42.5 43 45 35 45 H20" stroke-width="5.4"/>
+  </g>
+  <path d="M32 51.5 l5.2 5.2 -5.2 5.2 -5.2 -5.2 z" fill="#c06183"/>
+</svg>
