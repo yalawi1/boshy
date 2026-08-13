@@ -74,17 +74,21 @@
   const burger = document.getElementById("burger");
   const nav = document.getElementById("nav");
   if (burger && nav) {
-    const closeNav = () => {
-      burger.classList.remove("is-open");
-      nav.classList.remove("is-open");
-      burger.setAttribute("aria-expanded", "false");
-    };
-    burger.addEventListener("click", () => {
-      const open = burger.classList.toggle("is-open");
+    const setNav = (open) => {
+      burger.classList.toggle("is-open", open);
       nav.classList.toggle("is-open", open);
+      header?.classList.toggle("is-nav-open", open);
       burger.setAttribute("aria-expanded", String(open));
-    });
+      // lock the page behind the overlay
+      document.body.style.overflow = open ? "hidden" : "";
+    };
+    const closeNav = () => setNav(false);
+
+    burger.addEventListener("click", () => setNav(!nav.classList.contains("is-open")));
     nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
+    addEventListener("keydown", (e) => { if (e.key === "Escape") closeNav(); });
+    // a resize past the breakpoint should never leave the overlay stuck open
+    addEventListener("resize", () => { if (innerWidth > 900) closeNav(); });
   }
 
   /* ── Reveal on scroll (staggered) ── */
