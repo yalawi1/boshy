@@ -1,8 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#292426"/>
-  <!-- serif B sits high so the dot can drop underneath, the way baa (ب) is dotted -->
-  <text x="32" y="38" font-family="'Playfair Display', Georgia, 'Times New Roman', serif"
-        font-size="38" font-weight="600" fill="#faf7f4" text-anchor="middle">B</text>
-  <!-- the dot, turned 45 degrees like a qalam nib -->
-  <path d="M32 44 l6 6 -6 6 -6 -6 z" fill="#c06183"/>
+  <!-- the baa dot on its own: a square turned 45 degrees, in the brand pink -->
+  <path d="M32 5 l27 27 -27 27 -27 -27 z" fill="#c06183"/>
 </svg>

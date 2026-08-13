@@ -1199,6 +1199,31 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   border-color: var(--burgundy); transform: translateY(-2px);
 }
 
+/* Interiors on laptops and up: text left, plan right, instead of one tall column */
+@media (min-width: 901px) {
+  .ifeature__inner {
+    display: grid;
+    grid-template-columns: 1.02fr 0.98fr;
+    grid-template-rows: auto auto;
+    column-gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .ifeature__head {
+    grid-column: 1; grid-row: 1;
+    align-self: end;
+    margin: 0 0 1.8rem;
+  }
+  .ifeature__actions {
+    grid-column: 1; grid-row: 2;
+    align-self: start;
+  }
+  .ifeature__plan {
+    grid-column: 2; grid-row: 1 / span 2;
+    margin: 0;
+    justify-self: center;
+  }
+}
+
 /* ── Project tabs ── */
 .ptabs {
   display: flex; flex-wrap: wrap; gap: 0.6rem;
