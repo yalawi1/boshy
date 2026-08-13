@@ -154,7 +154,7 @@ ul { list-style: none; }
   justify-self: start;
   display: inline-flex; flex-direction: column; align-items: center;
   line-height: 1;
-  padding-bottom: 0.55rem;   /* room for the dot below the letter */
+  padding-bottom: 0.7rem;   /* room for the rotated dot below the letter */
 }
 .header__logo-b {
   font-family: var(--serif);
@@ -168,10 +168,12 @@ ul { list-style: none; }
   width: 9px; height: 9px;
   border-radius: 1px;
   background: var(--rose);
+  /* turned 45 degrees, the way a qalam lays the dot under baa */
+  transform: translateX(-50%) rotate(45deg);
   transition: background 0.35s, transform 0.35s var(--ease);
 }
 .header.is-scrolled .header__logo-dot { background: var(--burgundy); }
-.header__logo:hover .header__logo-dot { transform: translateX(-50%) scale(1.35); }
+.header__logo:hover .header__logo-dot { transform: translateX(-50%) rotate(45deg) scale(1.35); }
 .header__nav {
   display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.4rem);
   justify-self: center;

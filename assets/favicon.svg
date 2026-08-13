@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#292426"/>
-  <!-- B sits high so the dot can drop underneath it, the way baa (ب) is dotted -->
-  <text x="32" y="38" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="600"
-        fill="#faf7f4" text-anchor="middle">B</text>
-  <rect x="26" y="44" width="12" height="12" rx="1.5" fill="#c06183"/>
+  <!-- serif B sits high so the dot can drop underneath, the way baa (ب) is dotted -->
+  <text x="32" y="38" font-family="'Playfair Display', Georgia, 'Times New Roman', serif"
+        font-size="38" font-weight="600" fill="#faf7f4" text-anchor="middle">B</text>
+  <!-- the dot, turned 45 degrees like a qalam nib -->
+  <path d="M32 44 l6 6 -6 6 -6 -6 z" fill="#c06183"/>
 </svg>
