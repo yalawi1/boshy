@@ -422,7 +422,27 @@
     if (img.complete && img.naturalWidth === 0) fail();
   });
 
-  /* ── Project intake form ── */
+  /* ── Fusion collage: gentle parallax float on scroll ── */
+  const floats = [...document.querySelectorAll("[data-float]")];
+  if (floats.length && !prefersReduced && matchMedia("(min-width: 641px)").matches) {
+    let ticking = false;
+    const move = () => {
+      const mid = innerHeight / 2;
+      floats.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > innerHeight + 200) return;
+        const offset = (r.top + r.height / 2 - mid) * parseFloat(el.dataset.float);
+        el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+      });
+      ticking = false;
+    };
+    addEventListener("scroll", () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(move); }
+    }, { passive: true });
+    move();
+  }
+
+  /* ── Project intake form (legacy in-page form, if present) ── */
   const form = document.getElementById("intakeForm");
   if (form) {
     const note = document.getElementById("formNote");
