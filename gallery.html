@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery — Boshra</title>
-  <meta name="description" content="Boshra — modest fashion model. The full gallery: campaigns and editorials for 13 brands." />
+  <title>Gallery · Boshra</title>
+  <meta name="description" content="Boshra, modest fashion model. The full gallery: campaigns and editorials for modest fashion brands." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://boshrabelal.com/gallery.html" />
-  <meta property="og:title" content="Gallery — Boshra" />
-  <meta property="og:description" content="Campaigns and editorials for 13 modest fashion brands." />
+  <meta property="og:title" content="Gallery · Boshra" />
+  <meta property="og:description" content="Campaigns and editorials for modest fashion brands." />
   <meta name="theme-color" content="#292426" />
   <link rel="icon" href="assets/favicon.svg?v=13" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/favicon.svg?v=13" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=19" />
+  <link rel="stylesheet" href="css/style.css?v=20" />
 </head>
 <body class="subpage">
 
   <!-- Password gate -->
   <div class="gate" id="gate" hidden>
     <span class="gate__ar" lang="ar" dir="rtl">بُشْرَىٰ</span>
-    <p class="gate__label">Private portfolio — enter password</p>
+    <p class="gate__label">Private portfolio, enter password</p>
     <form class="gate__form" id="gateForm">
       <input class="gate__input" id="gateInput" type="password" inputmode="numeric" autocomplete="off" aria-label="Password" />
       <button class="gate__btn" type="submit" aria-label="Enter">→</button>
@@ -49,25 +49,37 @@
 
     <!-- Page head -->
     <section class="pagehead section">
-      <p class="pagehead__eyebrow reveal">Modeling — Selected Work</p>
+      <p class="pagehead__eyebrow reveal">Modeling · Selected Work</p>
       <h1 class="pagehead__title reveal">The <em>Gallery</em></h1>
-      <p class="pagehead__sub reveal">Campaigns and editorials for 13 modest fashion brands. Filter by brand, tap any photo to view.</p>
+      <p class="pagehead__sub reveal">Campaigns and editorials for modest fashion brands. Filter by brand, tap any photo to view.</p>
 
-      <div class="chips reveal" role="group" aria-label="Filter by brand">
+      <div class="chips reveal">
         <button class="chip is-active" data-brand="all">All</button>
-        <button class="chip" data-brand="jude">Jude × Judelle</button>
-        <button class="chip" data-brand="tajan">Tajan Hijab</button>
-        <button class="chip" data-brand="blackcloset">The Black Closet</button>
-        <button class="chip" data-brand="sumaya">Sumaya Couture</button>
-        <button class="chip" data-brand="haize">Haize the Label</button>
-        <button class="chip" data-brand="bynusayba">By Nusayba</button>
-        <button class="chip" data-brand="hayaa">Hayaa Fashion</button>
-        <button class="chip" data-brand="ibriz">Ibriz Abaya</button>
-        <button class="chip" data-brand="jamila">Jamila</button>
-        <button class="chip" data-brand="lilly">Lilly</button>
-        <button class="chip" data-brand="modesty">Modesty Abaya</button>
-        <button class="chip" data-brand="qibla">Qibla</button>
-        <button class="chip" data-brand="sjaal">Sjaal</button>
+
+        <div class="filter" id="filter">
+          <button class="chip chip--filter" id="filterBtn" aria-haspopup="listbox" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M3 5h18M6 12h12M10 19h4" stroke-linecap="round"/>
+            </svg>
+            <span id="filterLabel">Filter by brand</span>
+            <i class="filter__caret" aria-hidden="true"></i>
+          </button>
+          <div class="filter__menu" id="filterMenu" role="listbox" aria-label="Brands">
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="jude">Jude × Judelle</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="tajan">Tajan Hijab</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="blackcloset">The Black Closet</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="sumaya">Sumaya Couture</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="haize">Haize the Label</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="bynusayba">By Nusayba</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="hayaa">Hayaa Fashion</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="ibriz">Ibriz Abaya</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="jamila">Jamila</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="lilly">Lilly</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="modesty">Modesty Abaya</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="qibla">Qibla</button>
+            <button class="filter__opt" role="option" aria-selected="false" data-brand="sjaal">Sjaal</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -494,7 +506,7 @@
   </main>
 
   <footer class="footer">
-    <p>© <span id="year"></span> Boshra — Model &amp; Interior Designer</p>
+    <p>© <span id="year"></span> Boshra · Model &amp; Interior Designer</p>
   </footer>
 
   <!-- Lightbox -->
@@ -508,7 +520,7 @@
     <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">→</button>
   </div>
 
-  <script src="js/main.js?v=19"></script>
-  <script src="js/gallery.js?v=19"></script>
+  <script src="js/main.js?v=20"></script>
+  <script src="js/gallery.js?v=20"></script>
 </body>
 </html>

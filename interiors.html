@@ -3,32 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interiors — Boshra</title>
-  <meta name="description" content="Boshra — interior designer. A space maker transforming raw layouts into vibrant homes. Services, projects and experience." />
+  <title>Interiors · Boshra</title>
+  <meta name="description" content="Boshra, interior designer. A space maker turning raw layouts into vibrant homes. Projects, drawings, moodboards and services." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://boshrabelal.com/interiors.html" />
-  <meta property="og:title" content="Interiors — Boshra" />
-  <meta property="og:description" content="A space maker transforming raw layouts into vibrant homes." />
+  <meta property="og:title" content="Interiors · Boshra" />
+  <meta property="og:description" content="A space maker turning raw layouts into vibrant homes." />
   <meta name="theme-color" content="#292426" />
   <link rel="icon" href="assets/favicon.svg?v=13" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/favicon.svg?v=13" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=19" />
+  <link rel="stylesheet" href="css/style.css?v=20" />
 </head>
-<body class="subpage">
+<body class="subpage interiors-page">
 
   <!-- Password gate -->
   <div class="gate" id="gate" hidden>
     <span class="gate__ar" lang="ar" dir="rtl">بُشْرَىٰ</span>
-    <p class="gate__label">Private portfolio — enter password</p>
+    <p class="gate__label">Private portfolio, enter password</p>
     <form class="gate__form" id="gateForm">
       <input class="gate__input" id="gateInput" type="password" inputmode="numeric" autocomplete="off" aria-label="Password" />
       <button class="gate__btn" type="submit" aria-label="Enter">→</button>
     </form>
     <p class="gate__error" id="gateError" role="alert"></p>
   </div>
+
+  <!-- Scroll progress -->
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
   <!-- Header -->
   <header class="header is-scrolled" id="header">
@@ -37,9 +40,9 @@
       <a href="index.html">Home</a>
       <a href="gallery.html">Gallery</a>
       <a href="interiors.html" aria-current="page">Interiors</a>
-      <a href="index.html#contact" class="nav__contact">Contact</a>
+      <a href="index.html#start" class="nav__contact">Contact</a>
     </nav>
-    <a href="index.html#contact" class="header__cta">Contact</a>
+    <a href="index.html#start" class="header__cta">Start a project</a>
     <button class="header__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span>
     </button>
@@ -47,112 +50,190 @@
 
   <main>
 
-    <!-- Page head -->
-    <section class="pagehead section">
-      <p class="pagehead__eyebrow reveal">Interior Design</p>
-      <h1 class="pagehead__title reveal">Space <em>Maker</em></h1>
-      <p class="pagehead__sub reveal">Dedicated to transforming raw layouts into vibrant homes.</p>
-    </section>
-
-    <!-- Craft -->
-    <section class="interiors section" id="craft">
-      <div class="interiors__grid">
-        <figure class="interiors__panel reveal">
-          <canvas id="spaceCanvas" width="460" height="500" role="img" aria-label="Animated floor plan turning into a furnished living room"></canvas>
-          <figcaption>
-            <span>Layout study</span>
-            Raw plan → furnished home
-          </figcaption>
-        </figure>
-        <div class="interiors__body">
-          <p class="interiors__lede reveal">
-            <strong>From blueprint to styled reality.</strong> Residential and
-            workplace interiors — from the first moodboard to the last object
-            on the shelf.
-          </p>
-          <ul class="interiors__services">
-            <li class="reveal"><span>01</span><div><h3>Concept &amp; Moodboards</h3><p>One clear visual story — palette, mood, materials.</p></div></li>
-            <li class="reveal"><span>02</span><div><h3>Space Styling</h3><p>Furniture, textiles and objects, layered with intent.</p></div></li>
-            <li class="reveal"><span>03</span><div><h3>Colour Curation</h3><p>Rose, blush and charcoal — combinations that age gracefully.</p></div></li>
-          </ul>
-          <div class="interiors__actions reveal">
-            <a href="index.html#contact" class="btn btn--solid">Start a project</a>
-            <a class="iconlink" href="https://www.linkedin.com/in/boshra-belal-7276ab41b/" target="_blank" rel="noopener" aria-label="Boshra on LinkedIn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-            </a>
-          </div>
+    <!-- ══════════ HERO ══════════ -->
+    <section class="ihero">
+      <div class="ihero__grid" aria-hidden="true"></div>
+      <div class="ihero__inner">
+        <p class="ihero__eyebrow reveal">Interior Design · Cairo</p>
+        <h1 class="ihero__title">
+          <span class="line"><span class="reveal-line">Space</span></span>
+          <span class="line line--accent"><span class="reveal-line">Maker</span></span>
+        </h1>
+        <p class="ihero__sub reveal">
+          Turning raw layouts into vibrant homes. From the first plan on paper
+          to the last object on the shelf.
+        </p>
+        <div class="ihero__actions reveal">
+          <a href="#projects" class="btn btn--solid">See the projects</a>
+          <a href="index.html#start" class="btn btn--ghost">Start a project</a>
         </div>
       </div>
+      <figure class="ihero__panel reveal">
+        <canvas id="spaceCanvas" width="460" height="500" role="img" aria-label="Floor plan drawing itself and filling with furniture"></canvas>
+        <figcaption><span>Layout study</span>Raw plan to furnished home</figcaption>
+      </figure>
+    </section>
 
-      <div class="projects reveal">
-        <h3 class="xp__head">Past Work &amp; Projects</h3>
-        <ol class="projects__list">
-          <li>
-            <span class="projects__year">2026</span>
-            <div>
-              <strong>Office &amp; workplace interiors</strong>
-              <p>Design internship with the interiors team at PETROJET.</p>
-            </div>
-            <em class="projects__tag">Workplace</em>
-          </li>
-          <li>
-            <span class="projects__year">2025</span>
-            <div>
-              <strong>Residential concepts &amp; styling</strong>
-              <p>Design internship at Studio34.Cairo — moodboards, palettes and room concepts.</p>
-            </div>
-            <em class="projects__tag">Residential</em>
-          </li>
-          <li>
-            <span class="projects__year">Ongoing</span>
-            <div>
-              <strong>Design studio projects</strong>
-              <p>Full-room concepts and layout studies at O6U Applied Arts, Interior Design.</p>
-            </div>
-            <em class="projects__tag">Academic</em>
-          </li>
-        </ol>
+    <!-- ══════════ PROCESS ══════════ -->
+    <section class="process section">
+      <div class="section__head reveal">
+        <span class="section__num">01</span>
+        <h2 class="section__title">How a space comes together</h2>
+      </div>
+      <ol class="process__list">
+        <li class="reveal">
+          <span class="process__num">01</span>
+          <h3>Plan &amp; zoning</h3>
+          <p>Measure, map the flow, decide what happens where. Furniture, zoning and lighting plans drawn to scale.</p>
+        </li>
+        <li class="reveal">
+          <span class="process__num">02</span>
+          <h3>Moodboard</h3>
+          <p>One clear visual story. Palette, materials and references gathered until the room has a personality.</p>
+        </li>
+        <li class="reveal">
+          <span class="process__num">03</span>
+          <h3>Sections &amp; elevations</h3>
+          <p>Every wall drawn and rendered, so nothing is a surprise once it is built.</p>
+        </li>
+        <li class="reveal">
+          <span class="process__num">04</span>
+          <h3>Styling</h3>
+          <p>Furniture, textiles, plants and the small objects that make a room feel lived in.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ══════════ PROJECTS ══════════ -->
+    <section class="projects-grid section" id="projects">
+      <div class="section__head reveal">
+        <span class="section__num">02</span>
+        <h2 class="section__title">Projects</h2>
+        <p class="section__sub">Commercial studies. Drawings, moodboards and renders.</p>
       </div>
 
-      <div class="xp reveal">
-        <h3 class="xp__head">Experience &amp; Education</h3>
+      <!-- Project: Thamra -->
+      <article class="project reveal" id="thamra">
+        <header class="project__head">
+          <div>
+            <h3 class="project__title">Thamra</h3>
+            <p class="project__meta">Juice bar &amp; organic grocery · Commercial project</p>
+          </div>
+          <span class="project__tag">Retail</span>
+        </header>
+        <p class="project__intro">
+          A warm arcade of arches, terrazzo and deep green. Grab and go fridges
+          on one side, a slow counter on the other, with an Arabic verse running
+          the length of the back wall.
+        </p>
+        <div class="shots">
+          <figure class="shot shot--wide">
+            <img src="assets/interiors/thamra-plans.jpg" alt="Thamra furniture, zoning, colour and lighting plans with the exterior elevation" loading="lazy" />
+            <figcaption><span>Drawings</span>Furniture, zoning, colour and lighting plans</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/interiors/thamra-sections.jpg" alt="Thamra sections AA and BB with perspective and moodboard" loading="lazy" />
+            <figcaption><span>Sections</span>Elevations, perspective and moodboard</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- Project: SEDA -->
+      <article class="project reveal" id="seda">
+        <header class="project__head">
+          <div>
+            <h3 class="project__title">SEDA</h3>
+            <p class="project__meta">Fabric &amp; textile store · Commercial project</p>
+          </div>
+          <span class="project__tag">Retail</span>
+        </header>
+        <p class="project__intro">
+          Wine, rose and sand in layers. A painted landscape wraps the facade,
+          bolts of fabric hang like curtains, and a soft island sits in the
+          middle of the floor plan.
+        </p>
+        <div class="shots">
+          <figure class="shot shot--wide">
+            <img src="assets/interiors/seda-boards.jpg" alt="SEDA elevation, perspective, top view plan and section drawings with moodboards" loading="lazy" />
+            <figcaption><span>Board set</span>Elevation, perspective, plan and sections</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ══════════ SERVICES ══════════ -->
+    <section class="section services">
+      <div class="section__head reveal">
+        <span class="section__num">03</span>
+        <h2 class="section__title">Services</h2>
+      </div>
+      <ul class="interiors__services">
+        <li class="reveal"><span>01</span><div><h3>Concept &amp; Moodboards</h3><p>One clear visual story. Palette, mood, materials.</p></div></li>
+        <li class="reveal"><span>02</span><div><h3>Space Planning</h3><p>Zoning, furniture and lighting plans drawn to scale.</p></div></li>
+        <li class="reveal"><span>03</span><div><h3>Space Styling</h3><p>Furniture, textiles and objects, layered with intent.</p></div></li>
+        <li class="reveal"><span>04</span><div><h3>Colour Curation</h3><p>Rose, blush and charcoal. Combinations that age gracefully.</p></div></li>
+      </ul>
+    </section>
+
+    <!-- ══════════ EXPERIENCE ══════════ -->
+    <section class="section">
+      <div class="section__head reveal">
+        <span class="section__num">04</span>
+        <h2 class="section__title">Experience</h2>
+      </div>
+      <div class="xp">
         <div class="xp__grid">
-          <article class="xp__card">
+          <article class="xp__card reveal">
             <span class="xp__year">2026</span>
             <strong>Interior Designer</strong>
-            <p>PETROJET — Internship</p>
+            <p>PETROJET, internship. Office and workplace interiors.</p>
           </article>
-          <article class="xp__card">
+          <article class="xp__card reveal">
             <span class="xp__year">2025</span>
             <strong>Interior Designer</strong>
-            <p>Studio34.Cairo — Internship</p>
+            <p>Studio34.Cairo, internship. Residential concepts and styling.</p>
           </article>
-          <article class="xp__card">
-            <span class="xp__year">2023 – 2028</span>
+          <article class="xp__card reveal">
+            <span class="xp__year">2023 to 2028</span>
             <strong>BA Applied Arts, Interior Design</strong>
-            <p>October 6 University</p>
+            <p>October 6 University.</p>
           </article>
         </div>
+        <a class="iconlink reveal" href="https://www.linkedin.com/in/boshra-belal-7276ab41b/" target="_blank" rel="noopener" aria-label="Boshra on LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- ══════════ CTA ══════════ -->
     <section class="contact section">
       <div class="contact__inner">
-        <p class="contact__eyebrow reveal">Residential · Workplace · Styling</p>
+        <p class="contact__eyebrow reveal">Residential · Workplace · Retail</p>
         <h2 class="contact__title reveal">Have a space<br /><em>in mind?</em></h2>
         <div class="contact__actions reveal">
-          <a class="btn btn--light btn--lg" href="https://ig.me/m/boshrahijazy" target="_blank" rel="noopener">Message on Instagram</a>
-          <a class="btn btn--outline btn--lg" href="https://www.linkedin.com/in/boshra-belal-7276ab41b/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+          <a class="btn btn--light btn--lg" href="index.html#start">Start a project</a>
+          <a class="btn btn--outline btn--lg" href="https://ig.me/m/boshrahijazy" target="_blank" rel="noopener">Message on Instagram</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© <span id="year"></span> Boshra — Model &amp; Interior Designer</p>
+    <p>© <span id="year"></span> Boshra · Model &amp; Interior Designer</p>
   </footer>
 
-  <script src="js/main.js?v=19"></script>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lbClose" aria-label="Close">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous">←</button>
+    <figure>
+      <img id="lbImg" src="" alt="" />
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">→</button>
+  </div>
+
+  <script src="js/main.js?v=20"></script>
+  <script src="js/gallery.js?v=20"></script>
 </body>
 </html>

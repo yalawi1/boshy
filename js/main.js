@@ -399,6 +399,68 @@
     }
   }
 
+  /* ── Scroll progress bar (interiors page) ── */
+  const progress = document.getElementById("progress");
+  if (progress) {
+    const update = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = `${max > 0 ? (scrollY / max) * 100 : 0}%`;
+    };
+    addEventListener("scroll", update, { passive: true });
+    addEventListener("resize", update);
+    update();
+  }
+
+  /* ── Project shots: show a placeholder if a drawing is not in the repo yet ── */
+  document.querySelectorAll(".shot img").forEach((img) => {
+    const fail = () => {
+      const fig = img.closest(".shot");
+      fig.classList.add("is-missing");
+      fig.dataset.placeholder = "Drawing coming soon";
+    };
+    img.addEventListener("error", fail);
+    if (img.complete && img.naturalWidth === 0) fail();
+  });
+
+  /* ── Project intake form ── */
+  const form = document.getElementById("intakeForm");
+  if (form) {
+    const note = document.getElementById("formNote");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const d = new FormData(form);
+      const name = (d.get("name") || "").toString().trim();
+      if (!name) {
+        note.textContent = "Please add your name first.";
+        note.classList.remove("is-ok");
+        form.querySelector('[name="name"]').focus();
+        return;
+      }
+      const line = (label, key) => {
+        const v = (d.get(key) || "").toString().trim();
+        return v ? `${label}: ${v}\n` : "";
+      };
+      const brief =
+        `Project enquiry for Boshra\n\n` +
+        line("Name", "name") +
+        line("Company", "company") +
+        line("Project type", "type") +
+        line("Space size", "size") +
+        line("Location", "location") +
+        line("Timeline", "timeline") +
+        line("Brief", "brief");
+
+      try {
+        await navigator.clipboard.writeText(brief);
+        note.textContent = "Brief copied. Instagram is opening, just paste and send.";
+      } catch {
+        note.textContent = "Instagram is opening, paste your details into the chat.";
+      }
+      note.classList.add("is-ok");
+      open("https://ig.me/m/boshrahijazy", "_blank", "noopener");
+    });
+  }
+
   /* ── Footer year ── */
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
