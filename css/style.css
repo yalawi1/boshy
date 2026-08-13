@@ -957,6 +957,22 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
 .filter__opt:hover { background: var(--cream-2); color: var(--burgundy); }
 .filter__opt[aria-selected="true"] { background: var(--burgundy); color: #fff; }
 
+/* ── Interiors page ── */
+/* blueprint grid across the whole page, fixed so it reads like graph paper
+   under the content rather than sliding with it */
+.interiors-page::before {
+  content: "";
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(68, 64, 65, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(68, 64, 65, 0.06) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+/* lift the content above the grid without touching the fixed header */
+.interiors-page main,
+.interiors-page .footer { position: relative; z-index: 1; }
+
 /* ── Interiors page: hero ── */
 .interiors-page main { padding-top: 0; }
 .progress {
@@ -974,15 +990,6 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   padding: clamp(8rem, 16vh, 11rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 9vh, 6rem);
   max-width: 1250px; margin: 0 auto;
   overflow: hidden;
-}
-.ihero__grid {
-  position: absolute; inset: 0; z-index: 0;
-  background-image:
-    linear-gradient(to right, rgba(68,64,65,0.055) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(68,64,65,0.055) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse 75% 65% at 45% 40%, #000 35%, transparent 78%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 45% 40%, #000 35%, transparent 78%);
 }
 .ihero__inner, .ihero__panel { position: relative; z-index: 1; }
 .ihero__eyebrow {
@@ -1382,7 +1389,7 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
 
   /* ── Interiors page: simpler, faster, conversion first ── */
   .ihero { min-height: 0; padding-bottom: 2.5rem; }
-  .ihero__grid { display: none; }            /* drop the decorative grid */
+  .interiors-page::before { background-size: 34px 34px; opacity: 0.7; }
   .ihero__title { font-size: clamp(2.8rem, 15vw, 4rem); }
   .ihero__actions .btn { width: 100%; text-align: center; }
   .ihero__panel { padding: 0.7rem; }
