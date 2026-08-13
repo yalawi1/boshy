@@ -198,6 +198,8 @@ ul { list-style: none; }
 .btn--light:hover { background: var(--rose); border-color: var(--rose); }
 .btn--outline { border-color: var(--blush); color: var(--blush); }
 .btn--outline:hover { background: var(--blush); color: var(--plum); }
+.btn--ghost { color: var(--burgundy); }
+.btn--ghost:hover { background: var(--burgundy); color: #fff; }
 .btn--lg { padding: 1.2rem 2.8rem; font-size: 0.84rem; }
 
 /* ── Hero (full-bleed editorial) ── */
@@ -326,8 +328,26 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
 .model__lede {
   font-family: var(--serif); font-size: clamp(1.4rem, 2.8vw, 2rem);
   font-weight: 400; line-height: 1.4;
-  max-width: 34ch; margin-bottom: clamp(3rem, 7vh, 5rem);
+  max-width: 34ch; margin-bottom: 1.8rem;
   color: var(--chocolate);
+}
+.model__about {
+  max-width: 62ch;
+  margin-bottom: clamp(2.5rem, 6vh, 4rem);
+}
+.model__about p { margin-bottom: 1rem; color: var(--chocolate); }
+.model__about em { color: var(--burgundy); font-style: italic; }
+.model__sign {
+  display: block;
+  font-family: var(--arabic);
+  font-size: 1.9rem; color: var(--rose);
+  margin-top: 0.4rem;
+  text-align: left;
+}
+.model__actions {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 1rem;
+  margin-top: clamp(2.4rem, 5vh, 3.5rem);
 }
 .model__cards {
   display: grid; grid-template-columns: 1fr 1fr;

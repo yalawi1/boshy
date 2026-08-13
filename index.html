@@ -17,7 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=13" />
+  <link rel="preload" as="image" href="assets/img/studio-champagne.jpg" />
+  <link rel="stylesheet" href="css/style.css?v=15" />
 </head>
 <body>
 
@@ -41,9 +42,10 @@
   <header class="header" id="header">
     <a href="#top" class="header__logo">B<em>·</em></a>
     <nav class="header__nav" id="nav">
-      <a href="#model">Model</a>
+      <a href="#model">About</a>
+      <a href="gallery.html">Gallery</a>
       <a href="#brands">Brands</a>
-      <a href="#interiors">Interiors</a>
+      <a href="interiors.html">Interiors</a>
       <a href="#contact" class="nav__contact">Contact</a>
     </nav>
     <a href="#contact" class="header__cta">Contact</a>
@@ -80,16 +82,30 @@
       </h1>
     </section>
 
-    <!-- ══════════ MODEL ══════════ -->
+    <!-- ══════════ MODEL / ABOUT ══════════ -->
     <section class="model section" id="model">
       <div class="section__head reveal">
         <span class="section__num">01</span>
-        <h2 class="section__title">The Model</h2>
+        <h2 class="section__title">Hi, I'm Boshra</h2>
       </div>
       <p class="model__lede reveal">
-        Editorial calm, modest by design — telling a brand's story
-        in silk, knit and light.
+        A Cairo-based modest fashion model — and an interior design
+        student who believes elegance and modesty belong in the same frame.
       </p>
+      <div class="model__about reveal">
+        <p>
+          Modeling, for me, is representing what modesty means. Every campaign
+          is a chance to show that hijab is not a limit on style — it
+          <em>is</em> the style. I've shot abayas, hijabs and modest
+          ready-to-wear for thirteen brands, in studios, gardens and golden
+          hour streets.
+        </p>
+        <p>
+          Off set, you'll find me sketching floor plans — turning raw layouts
+          into vibrant homes.
+        </p>
+        <span class="model__sign" lang="ar" dir="rtl">بُشْرَىٰ</span>
+      </div>
       <div class="model__cards">
         <figure class="card3d reveal" data-tilt>
           <div class="card3d__inner">
@@ -104,6 +120,10 @@
           </div>
         </figure>
       </div>
+      <div class="model__actions reveal">
+        <a href="gallery.html" class="btn btn--solid btn--lg">View the full gallery</a>
+        <a href="https://www.instagram.com/boshrahijazy/" target="_blank" rel="noopener" class="btn btn--ghost">@boshrahijazy</a>
+      </div>
     </section>
 
     <!-- ══════════ BRANDS ══════════ -->
@@ -116,17 +136,17 @@
       <div class="carousel reveal" id="carousel" aria-roledescription="carousel" aria-label="Brand collaborations">
         <div class="carousel__stage" id="carouselStage">
 
-          <article class="ccard" data-url="https://www.instagram.com/jude.eg/">
-            <img class="ccard__photo" src="assets/img/p04-jude.jpg" alt="Jude campaign — golden hour portrait" loading="lazy" />
+          <article class="ccard" data-url="gallery.html?b=jude">
+            <img class="ccard__photo" src="assets/gallery/jude/01.jpg" alt="Boshra for Jude × Judelle" loading="lazy" />
             <div class="ccard__info">
               <span class="ccard__logo"><img src="assets/img/brands/jude.jpg" alt="" loading="lazy" /></span>
-              <h3>JUDE <small>× Judelle</small></h3>
+              <h3>Jude × Judelle</h3>
               <p>@jude.eg</p>
             </div>
           </article>
 
-          <article class="ccard" data-url="https://www.instagram.com/tajanhijab/">
-            <img class="ccard__photo" src="assets/img/p05-tajan.jpg" alt="Tajan Hijab campaign — crimson chiffon" loading="lazy" />
+          <article class="ccard" data-url="gallery.html?b=tajan">
+            <img class="ccard__photo" src="assets/gallery/tajan/01.jpg" alt="Boshra for Tajan Hijab" loading="lazy" />
             <div class="ccard__info">
               <span class="ccard__logo"><img src="assets/img/brands/tajan.jpg" alt="" loading="lazy" /></span>
               <h3>Tajan Hijab</h3>
@@ -134,8 +154,8 @@
             </div>
           </article>
 
-          <article class="ccard" data-url="https://www.instagram.com/theblackcloset.co/">
-            <img class="ccard__photo" src="assets/img/p11-blackcloset.jpg" alt="The Black Closet — espresso mirror portrait" loading="lazy" />
+          <article class="ccard" data-url="gallery.html?b=blackcloset">
+            <img class="ccard__photo" src="assets/gallery/blackcloset/01.jpg" alt="Boshra for The Black Closet" loading="lazy" />
             <div class="ccard__info">
               <span class="ccard__logo"><img src="assets/img/brands/blackcloset.jpg" alt="" loading="lazy" /></span>
               <h3>The Black Closet</h3>
@@ -143,8 +163,8 @@
             </div>
           </article>
 
-          <article class="ccard" data-url="https://www.instagram.com/sumayacouture/">
-            <img class="ccard__photo" src="assets/img/p12-sumaya.jpg" alt="Sumaya Couture — blush pleated set" loading="lazy" />
+          <article class="ccard" data-url="gallery.html?b=sumaya">
+            <img class="ccard__photo" src="assets/gallery/sumaya/01.jpg" alt="Boshra for Sumaya Couture" loading="lazy" />
             <div class="ccard__info">
               <span class="ccard__logo"><img src="assets/img/brands/sumaya.jpg" alt="" loading="lazy" /></span>
               <h3>Sumaya Couture</h3>
@@ -152,21 +172,84 @@
             </div>
           </article>
 
-          <article class="ccard" data-url="https://www.instagram.com/tresor_accessoriies/">
-            <img class="ccard__photo" src="assets/img/p08-tresor.jpg" alt="Trésor Accessories — beading workshop" loading="lazy" />
+          <article class="ccard" data-url="gallery.html?b=haize">
+            <img class="ccard__photo" src="assets/gallery/haize/01.jpg" alt="Boshra for Haize the Label" loading="lazy" />
             <div class="ccard__info">
-              <span class="ccard__logo"><img src="assets/img/brands/tresor.jpg" alt="" loading="lazy" /></span>
-              <h3>Trésor Accessories</h3>
-              <p>@tresor_accessoriies</p>
+              <span class="ccard__logo ccard__logo--mono">H</span>
+              <h3>Haize the Label</h3>
+              <p>Campaign</p>
             </div>
           </article>
 
-          <article class="ccard">
-            <img class="ccard__photo" src="assets/img/p06-polka.jpg" alt="Haize the Lable — polka dot asymmetrical top" loading="lazy" />
+          <article class="ccard" data-url="gallery.html?b=bynusayba">
+            <img class="ccard__photo" src="assets/gallery/bynusayba/01.jpg" alt="Boshra for By Nusayba" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo ccard__logo--mono">B</span>
+              <h3>By Nusayba</h3>
+              <p>Campaign</p>
+            </div>
+          </article>
+
+          <article class="ccard" data-url="gallery.html?b=hayaa">
+            <img class="ccard__photo" src="assets/gallery/hayaa/01.jpg" alt="Boshra for Hayaa Fashion" loading="lazy" />
             <div class="ccard__info">
               <span class="ccard__logo ccard__logo--mono">H</span>
-              <h3>Haize the Lable</h3>
-              <p>campaign</p>
+              <h3>Hayaa Fashion</h3>
+              <p>Campaign</p>
+            </div>
+          </article>
+
+          <article class="ccard" data-url="gallery.html?b=ibriz">
+            <img class="ccard__photo" src="assets/gallery/ibriz/01.jpg" alt="Boshra for Ibriz Abaya" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo ccard__logo--mono">I</span>
+              <h3>Ibriz Abaya</h3>
+              <p>Campaign</p>
+            </div>
+          </article>
+
+          <article class="ccard" data-url="gallery.html?b=jamila">
+            <img class="ccard__photo" src="assets/gallery/jamila/01.jpg" alt="Boshra for Jamila" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo ccard__logo--mono">J</span>
+              <h3>Jamila</h3>
+              <p>Campaign</p>
+            </div>
+          </article>
+
+          <article class="ccard" data-url="gallery.html?b=lilly">
+            <img class="ccard__photo" src="assets/gallery/lilly/01.jpg" alt="Boshra for Lilly" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo ccard__logo--mono">L</span>
+              <h3>Lilly</h3>
+              <p>Campaign</p>
+            </div>
+          </article>
+
+          <article class="ccard" data-url="gallery.html?b=modesty">
+            <img class="ccard__photo" src="assets/gallery/modesty/01.jpg" alt="Boshra for Modesty Abaya" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo ccard__logo--mono">M</span>
+              <h3>Modesty Abaya</h3>
+              <p>Campaign</p>
+            </div>
+          </article>
+
+          <article class="ccard" data-url="gallery.html?b=qibla">
+            <img class="ccard__photo" src="assets/gallery/qibla/01.jpg" alt="Boshra for Qibla" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo ccard__logo--mono">Q</span>
+              <h3>Qibla</h3>
+              <p>Campaign</p>
+            </div>
+          </article>
+
+          <article class="ccard" data-url="gallery.html?b=sjaal">
+            <img class="ccard__photo" src="assets/gallery/sjaal/01.jpg" alt="Boshra for Sjaal" loading="lazy" />
+            <div class="ccard__info">
+              <span class="ccard__logo ccard__logo--mono">S</span>
+              <h3>Sjaal</h3>
+              <p>Campaign</p>
             </div>
           </article>
 
@@ -185,7 +268,7 @@
       </div>
     </section>
 
-    <!-- ══════════ INTERIORS ══════════ -->
+    <!-- ══════════ INTERIORS (teaser) ══════════ -->
     <section class="interiors section" id="interiors">
       <div class="section__head reveal">
         <span class="section__num">03</span>
@@ -212,62 +295,11 @@
             <li class="reveal"><span>03</span><div><h3>Colour Curation</h3><p>Rose, blush and charcoal — combinations that age gracefully.</p></div></li>
           </ul>
           <div class="interiors__actions reveal">
-            <a href="#contact" class="btn btn--solid">Start a project</a>
+            <a href="interiors.html" class="btn btn--solid">Explore interiors →</a>
             <a class="iconlink" href="https://www.linkedin.com/in/boshra-belal-7276ab41b/" target="_blank" rel="noopener" aria-label="Boshra on LinkedIn">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
             </a>
           </div>
-        </div>
-      </div>
-
-      <div class="projects reveal">
-        <h3 class="xp__head">Past Work &amp; Projects</h3>
-        <ol class="projects__list">
-          <li>
-            <span class="projects__year">2026</span>
-            <div>
-              <strong>Office &amp; workplace interiors</strong>
-              <p>Design internship with the interiors team at PETROJET.</p>
-            </div>
-            <em class="projects__tag">Workplace</em>
-          </li>
-          <li>
-            <span class="projects__year">2025</span>
-            <div>
-              <strong>Residential concepts &amp; styling</strong>
-              <p>Design internship at Studio34.Cairo — moodboards, palettes and room concepts.</p>
-            </div>
-            <em class="projects__tag">Residential</em>
-          </li>
-          <li>
-            <span class="projects__year">Ongoing</span>
-            <div>
-              <strong>Design studio projects</strong>
-              <p>Full-room concepts and layout studies at O6U Applied Arts, Interior Design.</p>
-            </div>
-            <em class="projects__tag">Academic</em>
-          </li>
-        </ol>
-      </div>
-
-      <div class="xp reveal">
-        <h3 class="xp__head">Experience &amp; Education</h3>
-        <div class="xp__grid">
-          <article class="xp__card">
-            <span class="xp__year">2026</span>
-            <strong>Interior Designer</strong>
-            <p>PETROJET — Internship</p>
-          </article>
-          <article class="xp__card">
-            <span class="xp__year">2025</span>
-            <strong>Interior Designer</strong>
-            <p>Studio34.Cairo — Internship</p>
-          </article>
-          <article class="xp__card">
-            <span class="xp__year">2023 – 2028</span>
-            <strong>BA Applied Arts, Interior Design</strong>
-            <p>October 6 University</p>
-          </article>
         </div>
       </div>
     </section>
@@ -291,6 +323,6 @@
     <p>© <span id="year"></span> Boshra — Model &amp; Interior Designer</p>
   </footer>
 
-  <script src="js/main.js?v=13"></script>
+  <script src="js/main.js?v=15"></script>
 </body>
 </html>

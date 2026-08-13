@@ -105,6 +105,12 @@
     { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
   );
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  // Fallback: if the observer never fires (old/broken browsers), show everything.
+  setTimeout(() => {
+    if (!document.querySelector(".reveal.is-visible")) {
+      document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+    }
+  }, 1600);
 
   /* ── Brands 3D carousel ── */
   const stage = document.getElementById("carouselStage");
@@ -164,7 +170,10 @@
     cards.forEach((card, i) => {
       card.addEventListener("click", () => {
         if (i !== current) return goTo(i, true);
-        if (card.dataset.url) open(card.dataset.url, "_blank", "noopener");
+        const url = card.dataset.url;
+        if (!url) return;
+        if (url.startsWith("http")) open(url, "_blank", "noopener");
+        else location.href = url; // internal page (gallery)
       });
     });
 
@@ -377,6 +386,12 @@
         if (e.isIntersecting && !playing) { playing = true; rafId = requestAnimationFrame(loop); }
         else if (!e.isIntersecting && playing) { playing = false; cancelAnimationFrame(rafId); }
       }, { threshold: 0.2 }).observe(canvas);
+      // Fallback: if the observer never fires, animate whenever on screen.
+      setTimeout(() => {
+        if (playing) return;
+        const r = canvas.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < innerHeight) { playing = true; rafId = requestAnimationFrame(loop); }
+      }, 2200);
     }
   }
 

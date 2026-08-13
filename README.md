@@ -14,9 +14,12 @@ path; Cloudflare Pages ignores them. Build settings: none — static site, publi
 Pure HTML / CSS / JS — no build step, no dependencies, no external scripts. Just open `index.html` or serve the folder. Fonts load from Google Fonts; everything else is local.
 
 ```
-index.html      — single-page site
+index.html      — landing (hero, about, brands carousel, interiors teaser, contact)
+gallery.html    — modeling gallery: 13 brands, filter chips, lightbox
+interiors.html  — interior design page: canvas study, services, projects, experience
 css/style.css   — design system (white · grey · rose pink · charcoal palette)
-js/main.js      — preloader, scroll reveals, hero parallax, brands 3D carousel, tilt cards
+js/main.js      — gate, preloader, reveals, hero parallax, brands 3D carousel, tilt cards, floor-plan canvas
+js/gallery.js   — gallery brand filters + lightbox
 assets/img/     — studio photography + brand logos
 ```
 
