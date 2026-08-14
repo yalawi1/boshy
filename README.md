@@ -14,14 +14,24 @@ path; Cloudflare Pages ignores them. Build settings: none — static site, publi
 Pure HTML / CSS / JS — no build step, no dependencies, no external scripts. Just open `index.html` or serve the folder. Fonts load from Google Fonts; everything else is local.
 
 ```
-index.html      — landing (hero, about, brands carousel, interiors teaser, contact)
-gallery.html    — modeling gallery: 13 brands, filter chips, lightbox
-interiors.html  — interior design page: canvas study, services, projects, experience
-css/style.css   — design system (white · grey · rose pink · charcoal palette)
-js/main.js      — gate, preloader, reveals, hero parallax, brands 3D carousel, tilt cards, floor-plan canvas
-js/gallery.js   — gallery brand filters + lightbox
-assets/img/     — studio photography + brand logos
+index.html            — home, served at /
+gallery/index.html    — modeling gallery, served at /gallery
+interiors/index.html  — interior design page, served at /interiors
+gallery.html          — redirect stub, keeps the old link working
+interiors.html        — redirect stub
+home/index.html       — redirect stub, /home sends you to /
+css/style.css         — design system (white · grey · rose pink · charcoal palette)
+js/main.js            — gate, preloader, reveals, hero parallax, brands 3D carousel,
+                        tilt cards, project tabs, floor-plan canvas, progress bar
+js/gallery.js         — gallery brand filters + shared lightbox
+assets/               — photography, brand logos, favicon, Notion brand assets
 ```
+
+**URLs.** Pages live in folders so the host serves them without the `.html`
+extension: `gallery/index.html` is reached at `/gallery`. This works on any
+static host (Cloudflare Pages, GitHub Pages, Netlify) with no build step and no
+framework. Asset paths are root relative (`/css/...`), so the site must be served
+from a domain root, not a subfolder.
 
 Assets and scripts are cache-busted with a `?v=` query in `index.html` — bump it when you change `style.css` or `main.js`.
 
