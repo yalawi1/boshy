@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Not found · Boshra</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/assets/favicon.svg?v=34" type="image/svg+xml" />
+  <link rel="stylesheet" href="/css/style.css?v=34" />
+  <script>
+    /* Old links used to end in .html and /home. Send those to the clean URL
+       before rendering anything. Never rewrite to the same path, that is how
+       the previous redirect loop happened. */
+    (function () {
+      var p = location.pathname;
+      var target = null;
+      if (/\.html$/i.test(p)) target = p.replace(/\.html$/i, "");
+      else if (/^\/home\/?$/i.test(p)) target = "/";
+      if (target && target !== p && target !== "") {
+        location.replace(target + location.search + location.hash);
+      }
+    })();
+  </script>
+</head>
+<body class="subpage">
+  <header class="header is-scrolled" id="header">
+    <a href="/" class="header__logo" aria-label="Boshra, home"><span class="header__logo-b">B</span><span class="header__logo-dot" aria-hidden="true"></span></a>
+    <nav class="header__nav" id="nav">
+      <a href="/">Home</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/interiors">Interiors</a>
+    </nav>
+    <button class="header__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="pagehead section">
+      <p class="pagehead__eyebrow">Page not found</p>
+      <h1 class="pagehead__title">This page <em>moved</em></h1>
+      <p class="pagehead__sub">Try the gallery or the interiors work instead.</p>
+      <div class="ihero__actions" style="margin-top:2rem">
+        <a href="/gallery" class="btn btn--solid">View the gallery</a>
+        <a href="/interiors" class="btn btn--ghost">Interiors</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Boshra · Model &amp; Interior Designer</p>
+  </footer>
+  <script src="/js/main.js?v=34"></script>
+</body>
+</html>
