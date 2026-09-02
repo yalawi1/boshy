@@ -45,7 +45,7 @@ The interiors page has three sections: **Projects** (scroll walkthroughs from mo
 
 ## Password gate
 
-The site is gated behind a client-side password screen (session-scoped). The password is not stored in the source — only its SHA-256 hash in `js/main.js` (`GATE_HASH`). To change the password, generate a new hash (`python3 -c "import hashlib;print(hashlib.sha256(b'NEW').hexdigest())"`) and replace the constant. Note: this deters casual visitors only — a static site cannot enforce real authentication.
+Only the gallery (`/gallery`) is gated: a popup asks for a password and the photo grid stays hidden (`body.is-locked`) until it is answered, once per browser session. The home and interiors pages are open. The password is not stored in the source — only its SHA-256 hash in `js/main.js` (`GATE_HASH`). To change the password, generate a new hash (`python3 -c "import hashlib;print(hashlib.sha256(b'NEW').hexdigest())"`) and replace the constant. Note: this deters casual visitors only — a static site cannot enforce real authentication.
 
 ## Editing
 

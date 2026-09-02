@@ -11,24 +11,27 @@
   <meta property="og:description" content="Campaigns and editorials for modest fashion brands." />
   <link rel="canonical" href="https://boshrabelal.com/gallery" />
   <meta name="theme-color" content="#292426" />
-  <link rel="icon" href="/assets/favicon.svg?v=39" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/assets/notion/dot-pink-tile.png?v=39" />
+  <link rel="icon" href="/assets/favicon.svg?v=40" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/notion/dot-pink-tile.png?v=40" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css?v=39" />
+  <link rel="stylesheet" href="/css/style.css?v=40" />
 </head>
-<body class="subpage">
+<body class="subpage is-locked">
 
-  <!-- Password gate -->
-  <div class="gate" id="gate" hidden>
-    <span class="gate__ar" lang="ar" dir="rtl">بُشْرَىٰ</span>
-    <p class="gate__label">Private portfolio, enter password</p>
-    <form class="gate__form" id="gateForm">
-      <input class="gate__input" id="gateInput" type="password" inputmode="numeric" autocomplete="off" aria-label="Password" />
-      <button class="gate__btn" type="submit" aria-label="Enter">→</button>
-    </form>
-    <p class="gate__error" id="gateError" role="alert"></p>
+  <!-- Password popup: the photos stay hidden until it is answered -->
+  <div class="gate gate--modal" id="gate" hidden>
+    <div class="gate__card" role="dialog" aria-modal="true" aria-labelledby="gateLabel">
+      <span class="gate__ar" lang="ar" dir="rtl">بُشْرَىٰ</span>
+      <p class="gate__label" id="gateLabel">The gallery is private, enter password</p>
+      <form class="gate__form" id="gateForm">
+        <input class="gate__input" id="gateInput" type="password" inputmode="numeric" autocomplete="off" aria-label="Password" />
+        <button class="gate__btn" type="submit" aria-label="Enter">→</button>
+      </form>
+      <p class="gate__error" id="gateError" role="alert"></p>
+      <a class="gate__back" href="/">← Back to home</a>
+    </div>
   </div>
 
   <!-- Scroll progress -->
@@ -524,7 +527,7 @@
     <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">→</button>
   </div>
 
-  <script src="/js/main.js?v=39"></script>
-  <script src="/js/gallery.js?v=39"></script>
+  <script src="/js/main.js?v=40"></script>
+  <script src="/js/gallery.js?v=40"></script>
 </body>
 </html>

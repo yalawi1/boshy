@@ -13,7 +13,7 @@
     document.body.classList.add("is-loaded");
   };
 
-  /* ── Password gate (client-side; deters casual visitors only) ── */
+  /* ── Password gate: only the gallery page has #gate (client-side; deters casual visitors only) ── */
   const gate = document.getElementById("gate");
   const GATE_HASH = "70260742c2952154c84e2ea9f68b1a7397f49b6d343da1ed284093c0bd72c742";
   const sha256 = async (text) => {
@@ -32,6 +32,7 @@
   if (!gate || unlocked || !window.isSecureContext) {
     // crypto.subtle needs a secure context (https / localhost); fail open
     if (gate) gate.remove();
+    document.body.classList.remove("is-locked");
     armPreloader();
   } else {
     gate.hidden = false;
@@ -45,6 +46,7 @@
       if ((await sha256(input.value.trim())) === GATE_HASH) {
         sessionStorage.setItem("boshra-gate", "open");
         gate.classList.add("is-open");
+        document.body.classList.remove("is-locked");
         error.textContent = "";
         reveal();
         setTimeout(() => gate.remove(), 900);
