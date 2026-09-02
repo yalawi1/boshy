@@ -986,90 +986,14 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
 .ihero {
   position: relative;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1fr;
   gap: clamp(2rem, 6vw, 5rem);
   align-items: center;
-  padding: clamp(8rem, 16vh, 11rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 9vh, 6rem);
+  padding: clamp(8rem, 16vh, 11rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 7vh, 4.5rem);
   max-width: 1250px; margin: 0 auto;
   overflow: hidden;
 }
-.ihero__inner, .ihero__panel { position: relative; z-index: 1; }
-.ihero__eyebrow {
-  font-size: 0.74rem; letter-spacing: 0.34em; text-transform: uppercase;
-  color: var(--burgundy); margin-bottom: 1.2rem;
-}
-.ihero__title {
-  font-family: var(--serif); font-weight: 500;
-  font-size: clamp(3.2rem, 9vw, 6.5rem);
-  line-height: 0.95;
-}
-.ihero__title .line { display: block; overflow: hidden; }
-.ihero__title .line--accent { color: var(--burgundy); font-style: italic; font-weight: 400; padding-left: clamp(1.5rem, 5vw, 3.5rem); }
-.ihero__sub {
-  margin: 1.4rem 0 2.2rem;
-  font-size: 1.02rem; color: var(--chocolate);
-  max-width: 44ch;
-}
-.ihero__actions { display: flex; flex-wrap: wrap; gap: 1rem; }
-.ihero__panel {
-  margin: 0;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 1.2rem;
-  padding: 1rem;
-  box-shadow: 0 34px 64px -38px rgba(41, 36, 38, 0.45);
-}
-.ihero__panel canvas {
-  width: 100%; aspect-ratio: 460 / 500;
-  display: block; border-radius: 0.7rem;
-  background: var(--cream);
-}
-.ihero__panel figcaption {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 1rem; padding: 0.9rem 0.4rem 0.2rem;
-  font-family: var(--serif); font-size: 1rem; color: var(--chocolate);
-}
-.ihero__panel figcaption span {
-  font-family: var(--sans); font-size: 0.62rem;
-  letter-spacing: 0.26em; text-transform: uppercase; color: var(--burgundy);
-}
-
-/* ── Interiors page: process ── */
-.process { border-top: 1px solid var(--line); }
-.process__list {
-  list-style: none;
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 1.2rem;
-}
-.process__list li {
-  position: relative;
-  padding: 1.8rem 1.4rem 1.5rem;
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  background: #fff;
-  overflow: hidden;
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
-}
-.process__list li::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
-  background: var(--rose);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.5s var(--ease);
-}
-.process__list li:hover { transform: translateY(-5px); box-shadow: 0 24px 44px -28px rgba(41,36,38,0.4); }
-.process__list li:hover::after { transform: scaleX(1); }
-.process__num {
-  display: block;
-  font-family: var(--serif); font-style: italic;
-  color: var(--rose); font-size: 1.05rem; margin-bottom: 0.6rem;
-}
-.process__list h3 {
-  font-family: var(--serif); font-weight: 500;
-  font-size: 1.2rem; margin-bottom: 0.35rem;
-}
-.process__list p { font-size: 0.88rem; color: var(--chocolate); opacity: 0.85; }
-
-/* ── Interiors page: projects ── */
+.ihero__inner, /* ── Interiors page: projects ── */
 .projects-grid { border-top: 1px solid var(--line); }
 .project { margin-bottom: 0; }
 .project__head {
@@ -1389,8 +1313,6 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
 
   /* Interiors page */
   .ihero { grid-template-columns: 1fr; padding-top: clamp(6.5rem, 13vh, 9rem); }
-  .ihero__panel { max-width: 460px; }
-  .process__list { grid-template-columns: repeat(2, 1fr); }
   .interiors__grid { grid-template-columns: 1fr; }
   .interiors__panel { position: static; max-width: 460px; margin: 0 auto; width: 100%; }
   .xp__grid { grid-template-columns: 1fr; }
@@ -1470,10 +1392,6 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   .interiors-page::before { background-size: 34px 34px; opacity: 0.7; }
   .ihero__title { font-size: clamp(2.8rem, 15vw, 4rem); }
   .ihero__actions .btn { width: 100%; text-align: center; }
-  .ihero__panel { padding: 0.7rem; }
-
-  .process__list { grid-template-columns: 1fr; gap: 0.8rem; }
-  .process__list li { padding: 1.3rem 1.2rem; }
 
   .shots { grid-template-columns: 1fr; gap: 0.8rem; }
   .shot--wide { grid-column: auto; }
