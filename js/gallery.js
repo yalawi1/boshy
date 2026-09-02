@@ -17,7 +17,9 @@
     filterBtn?.setAttribute("aria-expanded", "false");
   };
 
+  let currentSlug = "all";
   const applyFilter = (slug) => {
+    currentSlug = slug;
     const opt = opts.find((o) => o.dataset.brand === slug);
     allChip?.classList.toggle("is-active", slug === "all");
     opts.forEach((o) => o.setAttribute("aria-selected", String(o === opt)));
@@ -48,6 +50,71 @@
     applyFilter(param && opts.some((o) => o.dataset.brand === param) ? param : "all");
   }
 
+  /* ── Encrypted photos ──
+     The page ships only 24px blurred placeholders and AES-GCM encrypted files under
+     random names. The key comes from the password via PBKDF2; the manifest that maps
+     tiles to files is encrypted too, so nothing readable exists before unlocking. */
+  const ENC_DIR = "/assets/gallery-enc/";
+  const SALT = "boshra-gallery-v1", ITER = 300000;   // must match tools/encrypt-gallery.py
+  const te = new TextEncoder();
+  const b64enc = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));
+  const b64dec = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+  const deriveKey = async (password) => {
+    const base = await crypto.subtle.importKey("raw", te.encode(password), "PBKDF2", false, ["deriveKey"]);
+    return crypto.subtle.deriveKey(
+      { name: "PBKDF2", salt: te.encode(SALT), iterations: ITER, hash: "SHA-256" },
+      base, { name: "AES-GCM", length: 256 }, true, ["decrypt"]);
+  };
+  const importKey = (raw) => crypto.subtle.importKey("raw", raw, "AES-GCM", true, ["decrypt"]);
+  const fetchDecrypted = async (key, file) => {
+    const u = new Uint8Array(await (await fetch(ENC_DIR + file)).arrayBuffer());
+    return crypto.subtle.decrypt({ name: "AES-GCM", iv: u.slice(0, 12) }, key, u.slice(12));
+  };
+
+  const unlockGrid = async (key) => {
+    const manifest = JSON.parse(new TextDecoder().decode(await fetchDecrypted(key, "manifest.bin")));
+    manifest.forEach((m, i) => {
+      const fig = items[i]; if (!fig) return;
+      fig.dataset.brand = m.brand; fig.dataset.name = m.name; fig.dataset.file = m.file;
+      fig.querySelector("figcaption").textContent = m.name;
+      fig.querySelector("img").alt = m.alt;
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(async (en) => {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        const fig = en.target, img = fig.querySelector("img");
+        try {
+          const buf = await fetchDecrypted(key, fig.dataset.file);
+          img.onload = () => fig.classList.remove("is-locked");
+          img.removeAttribute("aria-hidden");
+          img.src = URL.createObjectURL(new Blob([buf], { type: "image/jpeg" }));
+        } catch { fig.classList.add("is-missing"); }
+      });
+    }, { rootMargin: "500px 0px" });
+    items.forEach((f) => io.observe(f));
+    applyFilter(currentSlug);   // brands are only known now
+  };
+  const startUnlock = async (key) => {
+    try {
+      await unlockGrid(key);
+      sessionStorage.setItem("boshra-gk", b64enc(await crypto.subtle.exportKey("raw", key)));
+    } catch {
+      // bad or stale key: forget the session and ask again
+      sessionStorage.removeItem("boshra-gk"); sessionStorage.removeItem("boshra-gate");
+      location.reload();
+    }
+  };
+  if (grid && window.crypto?.subtle) {
+    document.addEventListener("gate:open", (e) => deriveKey(e.detail.password).then(startUnlock));
+    const saved = sessionStorage.getItem("boshra-gk");
+    if (saved) importKey(b64dec(saved)).then(startUnlock);
+    else if (sessionStorage.getItem("boshra-gate") === "open") {
+      // unlocked before this version shipped: ask once more so the key exists
+      sessionStorage.removeItem("boshra-gate"); location.reload();
+    }
+  }
+
   /* ── Lightbox: gallery items or project shots ── */
   const lb = document.getElementById("lightbox");
   if (!lb) return;
@@ -59,7 +126,7 @@
 
   let current = 0;
   const visible = () =>
-    sources.filter((el) => !el.classList.contains("is-hidden") && !el.classList.contains("is-missing"));
+    sources.filter((el) => !el.classList.contains("is-hidden") && !el.classList.contains("is-missing") && !el.classList.contains("is-locked"));
 
   const openAt = (el) => {
     const vis = visible();
@@ -89,7 +156,7 @@
 
   sources.forEach((el) =>
     el.addEventListener("click", () => {
-      if (!el.classList.contains("is-missing")) openAt(el);
+      if (!el.classList.contains("is-missing") && !el.classList.contains("is-locked")) openAt(el);
     })
   );
   document.getElementById("lbClose").addEventListener("click", close);

@@ -45,7 +45,15 @@ The interiors page has three sections: **Projects** (scroll walkthroughs from mo
 
 ## Password gate
 
-Only the gallery (`/gallery`) is gated: a popup asks for a password and the photo grid stays hidden (`body.is-locked`) until it is answered, once per browser session. The home and interiors pages are open. The password is not stored in the source — only its SHA-256 hash in `js/main.js` (`GATE_HASH`). To change the password, generate a new hash (`python3 -c "import hashlib;print(hashlib.sha256(b'NEW').hexdigest())"`) and replace the constant. Note: this deters casual visitors only — a static site cannot enforce real authentication.
+Only the gallery (`/gallery`) is gated, and the photos are genuinely not on the page until the password is known:
+
+- the page ships 24px blurred placeholders (`assets/gallery-blur/`) and AES-GCM encrypted copies of the photos under random names (`assets/gallery-enc/`), plus an encrypted manifest;
+- `js/gallery.js` derives the key from the password (PBKDF2, 300k iterations) and decrypts each photo in the browser as it scrolls into view. View-source, devtools and the repo show only ciphertext and blur;
+- the popup tells visitors to message @boshrahijazy on Instagram for the password. Once entered it stays open for the browser session.
+
+To add or replace photos, keep the originals in a folder outside the repo (one subfolder per brand slug) and run `python3 tools/encrypt-gallery.py --src <folder> --password <pw>`; it rewrites the placeholders, the encrypted files and the grid. Changing the password means re-running it and updating `GATE_HASH` in `js/main.js`.
+
+Caveats: a short numeric password can be guessed by trying every combination, and the original photos still exist in the git history of the public repo from before this change. The password is not stored in the source — only its SHA-256 hash in `js/main.js` (`GATE_HASH`). To change the password, generate a new hash (`python3 -c "import hashlib;print(hashlib.sha256(b'NEW').hexdigest())"`) and replace the constant. Note: this deters casual visitors only — a static site cannot enforce real authentication.
 
 ## Editing
 

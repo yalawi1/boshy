@@ -43,8 +43,11 @@
     document.getElementById("gateForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       gate.classList.remove("is-wrong");
-      if ((await sha256(input.value.trim())) === GATE_HASH) {
+      const password = input.value.trim();
+      if ((await sha256(password)) === GATE_HASH) {
         sessionStorage.setItem("boshra-gate", "open");
+        // gallery.js derives the decryption key from it
+        document.dispatchEvent(new CustomEvent("gate:open", { detail: { password } }));
         gate.classList.add("is-open");
         document.body.classList.remove("is-locked");
         error.textContent = "";
