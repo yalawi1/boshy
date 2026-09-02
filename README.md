@@ -17,12 +17,10 @@ Pure HTML / CSS / JS — no build step, no dependencies, no external scripts. Ju
 index.html            — home, served at /
 gallery/index.html    — modeling gallery, served at /gallery
 interiors/index.html  — interior design page, served at /interiors
-gallery.html          — redirect stub, keeps the old link working
-interiors.html        — redirect stub
-home/index.html       — redirect stub, /home sends you to /
+404.html              — clean-URL handler: /gallery.html → /gallery, /home → /
 css/style.css         — design system (white · grey · rose pink · charcoal palette)
 js/main.js            — gate, preloader, reveals, hero parallax, brands 3D carousel,
-                        tilt cards, project tabs, floor-plan canvas, progress bar
+                        tilt cards, floor-plan canvas, progress bar, project walkthroughs
 js/gallery.js         — gallery brand filters + shared lightbox
 assets/               — photography, brand logos, favicon, Notion brand assets
 ```
@@ -33,14 +31,16 @@ static host (Cloudflare Pages, GitHub Pages, Netlify) with no build step and no
 framework. Asset paths are root relative (`/css/...`), so the site must be served
 from a domain root, not a subfolder.
 
-Assets and scripts are cache-busted with a `?v=` query in `index.html` — bump it when you change `style.css` or `main.js`.
+Assets and scripts are cache-busted with a `?v=` query in every page — bump it when you change `style.css` or `main.js`.
 
 ## Sections
 
 1. **Hero** — full-bleed editorial: darkened studio photo, focus-frame crosshair detail, corner labels, and the name **Boshra بُشْرَىٰ** across the bottom
 2. **The Model** — two studio shots as interactive 3D tilt cards
 3. **Brands** — 3D coverflow carousel of brand cards (logo, campaign photo, link) with a booking CTA: JUDE × Judelle, Tajan Hijab, The Black Closet, Sumaya Couture, Trésor Accessories, Haize the Lable
-4. **Interiors — Space Maker** — framed canvas floor-plan animation, services, experience/education cards, LinkedIn link
+4. **Interiors** — teaser for the interiors page: framed canvas floor-plan animation and a Start a project button
+
+The interiors page has three sections: **Projects** (scroll walkthroughs from moodboard to drawings for Raheeq, SEDA and an apartment execution package), **Foundations** (study grid) and **Experience**.
 5. **Contact** — Instagram DM link
 
 ## Password gate

@@ -993,7 +993,26 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   max-width: 1250px; margin: 0 auto;
   overflow: hidden;
 }
-.ihero__inner, /* ── Interiors page: projects ── */
+.ihero__inner { position: relative; z-index: 1; max-width: 62ch; }
+.ihero__eyebrow {
+  font-size: 0.74rem; letter-spacing: 0.34em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 1.2rem;
+}
+.ihero__title {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(3.2rem, 8vw, 6rem);
+  line-height: 0.95;
+}
+.ihero__title .line { display: block; overflow: hidden; }
+.ihero__title .line--accent { color: var(--burgundy); font-style: italic; font-weight: 400; padding-left: clamp(1.5rem, 5vw, 3.5rem); }
+.ihero__sub {
+  margin: 1.4rem 0 2.2rem;
+  font-size: 1.02rem; color: var(--chocolate);
+  max-width: 44ch;
+}
+.ihero__actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+/* ── Interiors page: projects ── */
 .projects-grid { border-top: 1px solid var(--line); }
 .project { margin-bottom: 0; }
 .project__head {
