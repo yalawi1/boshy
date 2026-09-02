@@ -422,27 +422,51 @@
     if (img.complete && img.naturalWidth === 0) fail();
   });
 
-  /* ── Project tabs ── */
-  const tabs = [...document.querySelectorAll(".ptab")];
-  if (tabs.length) {
-    const panels = [...document.querySelectorAll(".ppanel")];
-    const show = (id) => {
-      tabs.forEach((t) => {
-        const on = t.dataset.panel === id;
-        t.classList.toggle("is-active", on);
-        t.setAttribute("aria-selected", String(on));
-      });
-      panels.forEach((p) => p.classList.toggle("is-active", p.id === id));
-      // the drawings inside a freshly shown panel may still be lazy
-      document.querySelectorAll(`#${id} .shot img`).forEach((img) => {
-        if (!img.complete && img.loading === "lazy") img.loading = "eager";
-      });
+
+  /* ── Project walkthroughs: sticky stage, steps drive the image ── */
+  document.querySelectorAll("[data-walk]").forEach((walk) => {
+    const steps = [...walk.querySelectorAll(".walk__step")];
+    const imgs  = [...walk.querySelectorAll(".walk__img")];
+    const dots  = [...walk.querySelectorAll(".walk__rail i")];
+    const label = walk.querySelector(".walk__cap-label");
+    const frame = walk.querySelector(".walk__frame");
+    let current = 0;
+
+    const show = (i) => {
+      current = i;
+      steps.forEach((s, k) => s.classList.toggle("is-on", k === i));
+      imgs.forEach((m, k) => m.classList.toggle("is-on", k === i));
+      dots.forEach((d, k) => d.classList.toggle("is-on", k === i));
+      if (label) label.textContent = steps[i].dataset.label || "";
+      // warm the next image so the crossfade never waits on the network
+      const nxt = imgs[i + 1]; if (nxt && nxt.loading === "lazy") nxt.loading = "eager";
     };
-    tabs.forEach((t) => t.addEventListener("click", () => show(t.dataset.panel)));
-    // deep link: interiors.html#thamra
-    const hash = location.hash.slice(1);
-    if (hash && panels.some((p) => p.id === hash)) show(hash);
-  }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) show(steps.indexOf(e.target)); });
+    }, { rootMargin: "-42% 0px -42% 0px", threshold: 0 });
+    steps.forEach((s) => io.observe(s));
+
+    steps.forEach((s, i) => s.addEventListener("click", () => {
+      show(i);
+      s.scrollIntoView({ block: "center", behavior: prefersReduced ? "auto" : "smooth" });
+    }));
+
+    // the stage opens the current drawing in the lightbox
+    const openCurrent = () => {
+      const lb = document.getElementById("lightbox");
+      const on = imgs[current];
+      if (!lb || !on) return;
+      const lbImg = document.getElementById("lbImg"), lbCap = document.getElementById("lbCap");
+      lbImg.src = on.src; lbImg.alt = on.alt; lbCap.textContent = on.alt;
+      lb.classList.add("is-open"); lb.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+    frame.addEventListener("click", openCurrent);
+    frame.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openCurrent(); } });
+
+    show(0);
+  });
 
   /* ── Fusion collage: gentle parallax float on scroll ── */
   const floats = [...document.querySelectorAll("[data-float]")];
