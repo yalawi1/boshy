@@ -40,7 +40,7 @@ Assets and scripts are cache-busted with a `?v=` query in every page — bump it
 3. **Brands** — 3D coverflow carousel of brand cards (logo, campaign photo, link) with a booking CTA: JUDE × Judelle, Tajan Hijab, The Black Closet, Sumaya Couture, Trésor Accessories, Haize the Lable
 4. **Interiors** — teaser for the interiors page: framed canvas floor-plan animation and a Start a project button
 
-The interiors page has three sections: **Projects** (scroll walkthroughs from moodboard to drawings for Raheeq, SEDA and an apartment execution package), **Foundations** (study grid) and **Experience**.
+The interiors page has two sections: **Projects** (scroll walkthroughs from moodboard to drawings for Raheeq, SEDA and an apartment execution package) and **Experience**.
 5. **Contact** — Instagram DM link
 
 ## Password gate

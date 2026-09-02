@@ -6,6 +6,5 @@ Sourced from Boshra's shared Drive folder. PDFs are AutoCAD exports rendered at
 - `raheeq/`     — Raheeq (رحيق) juice bar: plans, zoning, furniture plan, exterior render, interior elevation
 - `seda/`       — SEDA fabric store: moodboard, plans, sections, two hand-rendered boards (storefront, sections)
 - `apartment/`  — residential working drawings: furniture, ceiling/lighting, section, supply, drainage, joinery
-- `studies/`    — foundation work: pattern, colour, still life, models, two hand-rendered residential sections
 
 The Thamra juice-bar boards from the same folder are intentionally not used.

@@ -816,7 +816,7 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   background: var(--cream-2);
 }
 .gitem img {
-  width: 100%; display: block;
+  width: 100%; height: auto; display: block;   /* height: auto beats the height attribute */
   transition: transform 0.7s var(--ease);
 }
 .gitem:hover img { transform: scale(1.05); }
@@ -1337,8 +1337,6 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
 .walk__step h4 { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; line-height: 1.25; margin-bottom: 0.3rem; }
 .walk__step p { font-size: 0.9rem; color: var(--chocolate); opacity: 0.85; max-width: 42ch; }
 
-.studies { border-top: 1px solid var(--line); }
-.studies .ggrid { columns: 4; }
 
 @media (max-width: 900px) {
   .walk__body { grid-template-columns: 1fr; gap: 1.2rem; }
@@ -1347,12 +1345,10 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
   .walk__step { padding: 1.1rem 0 1.1rem 1.4rem; }
   .walk__step::before { top: calc(1.1rem + 0.45rem); }
   .walk__step:first-child::before { top: 0.85rem; }
-  .studies .ggrid { columns: 3; }
 }
 @media (max-width: 640px) {
   .walk__head { flex-wrap: wrap; }
   .walk__frame { aspect-ratio: 1 / 1; }
-  .studies .ggrid { columns: 2; }
 }
 
 /* ── Reveal on scroll ── */
