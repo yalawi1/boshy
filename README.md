@@ -19,7 +19,7 @@ gallery/index.html    — modeling gallery, served at /gallery
 interiors/index.html  — interior design page, served at /interiors
 404.html              — clean-URL handler: /gallery.html → /gallery, /home → /
 css/style.css         — design system (white · grey · rose pink · charcoal palette)
-js/main.js            — gate, preloader, reveals, hero parallax, brands 3D carousel,
+js/main.js            — preloader, reveals, hero parallax, brands 3D carousel,
                         tilt cards, floor-plan canvas, progress bar, project walkthroughs
 js/gallery.js         — gallery brand filters + shared lightbox
 assets/               — photography, brand logos, favicon, Notion brand assets
@@ -42,18 +42,6 @@ Assets and scripts are cache-busted with a `?v=` query in every page — bump it
 
 The interiors page has two sections: **Projects** (scroll walkthroughs from moodboard to drawings for Raheeq, SEDA and an apartment execution package) and **Experience**.
 5. **Contact** — Instagram DM link
-
-## Password gate
-
-Only the gallery (`/gallery`) is gated, and the photos are genuinely not on the page until the password is known:
-
-- the page ships 24px blurred placeholders (`assets/gallery-blur/`) and AES-GCM encrypted copies of the photos under random names (`assets/gallery-enc/`), plus an encrypted manifest;
-- `js/gallery.js` derives the key from the password (PBKDF2, 300k iterations) and decrypts each photo in the browser as it scrolls into view. View-source, devtools and the repo show only ciphertext and blur;
-- the popup tells visitors to message @boshrahijazy on Instagram for the password. Once entered it stays open for the browser session.
-
-To add or replace photos, keep the originals in a folder outside the repo (one subfolder per brand slug) and run `python3 tools/encrypt-gallery.py --src <folder> --password <pw>`; it rewrites the placeholders, the encrypted files and the grid. Changing the password means re-running it and updating `GATE_HASH` in `js/main.js`.
-
-Caveats: a short numeric password can be guessed by trying every combination, and the original photos still exist in the git history of the public repo from before this change. The password is not stored in the source — only its SHA-256 hash in `js/main.js` (`GATE_HASH`). To change the password, generate a new hash (`python3 -c "import hashlib;print(hashlib.sha256(b'NEW').hexdigest())"`) and replace the constant. Note: this deters casual visitors only — a static site cannot enforce real authentication.
 
 ## Editing
 
