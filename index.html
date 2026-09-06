@@ -13,13 +13,13 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://boshrabelal.com/" />
   <meta name="theme-color" content="#292426" />
-  <link rel="icon" href="/assets/favicon.svg?v=43" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/assets/notion/dot-pink-tile.png?v=43" />
+  <link rel="icon" href="/assets/favicon.svg?v=44" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/notion/dot-pink-tile.png?v=44" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="/assets/img/studio-champagne.jpg" />
-  <link rel="stylesheet" href="/css/style.css?v=43" />
+  <link rel="stylesheet" href="/css/style.css?v=44" />
 </head>
 <body>
 
@@ -38,7 +38,7 @@
     <nav class="header__nav" id="nav">
       <a href="#top" aria-current="page">Home</a>
       <a href="/gallery">Gallery</a>
-      <a href="/interiors">Interiors</a>
+      <!-- hidden for now: <a href="/interiors">Interiors</a> -->
       <a href="#contact" class="nav__contact">Contact</a>
     </nav>
     <a href="#contact" class="header__cta">Contact</a>
@@ -248,6 +248,43 @@
       </div>
     </section>
 
+    <!-- ══════════ SELECTED FRAMES ══════════ -->
+    <section class="frames section" id="frames">
+      <div class="section__head reveal">
+        <span class="section__num">03</span>
+        <h2 class="section__title">Selected <em>Frames</em></h2>
+        <p class="section__sub">A few favourites from recent shoots. The full set lives in the gallery.</p>
+      </div>
+      <div class="frames__grid reveal">
+        <a class="frames__item frames__item--tall" href="/gallery?b=studio">
+          <img src="/assets/gallery/studio/04.jpg" alt="Boshra in a plum and gold satin abaya" loading="lazy" decoding="async" />
+          <span class="frames__cap">Studio Edit</span>
+        </a>
+        <a class="frames__item" href="/gallery?b=studio">
+          <img src="/assets/gallery/studio/01.jpg" alt="Boshra in a silver satin abaya" loading="lazy" decoding="async" />
+          <span class="frames__cap">Studio Edit</span>
+        </a>
+        <a class="frames__item" href="/gallery?b=ibriz">
+          <img src="/assets/gallery/ibriz/10.jpg" alt="Boshra for Ibriz Abaya" loading="lazy" decoding="async" />
+          <span class="frames__cap">Ibriz Abaya</span>
+        </a>
+        <a class="frames__item" href="/gallery?b=street">
+          <img src="/assets/gallery/street/08.jpg" alt="Boshra in a sage tunic and denim" loading="lazy" decoding="async" />
+          <span class="frames__cap">Street Edit</span>
+        </a>
+        <a class="frames__item" href="/gallery?b=studio">
+          <img src="/assets/gallery/studio/08.jpg" alt="Boshra in a blush satin set" loading="lazy" decoding="async" />
+          <span class="frames__cap">Studio Edit</span>
+        </a>
+      </div>
+      <div class="frames__actions reveal">
+        <a href="/gallery" class="btn btn--solid btn--lg">See the gallery</a>
+      </div>
+    </section>
+
+    <!-- Interiors section, hidden for now. A <template> keeps the markup in the
+         page without rendering it or loading anything; move it back out to restore. -->
+    <template id="interiors-hidden">
     <!-- ══════════ INTERIORS ══════════ -->
     <section class="ifeature" id="interiors">
       <div class="ifeature__grid-bg" aria-hidden="true"></div>
@@ -274,10 +311,12 @@
       </div>
     </section>
 
+    </template>
+
     <!-- ══════════ CONTACT ══════════ -->
     <section class="contact section" id="contact">
       <div class="contact__inner">
-        <p class="contact__eyebrow reveal">Bookings · Campaigns · Interiors</p>
+        <p class="contact__eyebrow reveal">Bookings · Campaigns · Editorials</p>
         <h2 class="contact__title reveal">Let's create<br /><em>something beautiful</em></h2>
         <div class="contact__actions reveal">
           <a class="btn btn--light btn--lg" href="https://ig.me/m/boshrahijazy" target="_blank" rel="noopener">Message on Instagram</a>
@@ -293,6 +332,6 @@
     <p>© <span id="year"></span> Boshra · Model &amp; Interior Designer</p>
   </footer>
 
-  <script src="/js/main.js?v=43"></script>
+  <script src="/js/main.js?v=44"></script>
 </body>
 </html>

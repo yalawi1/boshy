@@ -1095,6 +1095,37 @@ body.is-loaded .hero__name-ar { transition-delay: 0.42s; }
 }
 .ifeature__actions { display: flex; flex-wrap: wrap; gap: 1rem; }
 
+/* ── Selected frames (home 03) ── */
+.frames { border-top: 1px solid var(--line); }
+.frames__grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+}
+.frames__item {
+  position: relative; display: block; overflow: hidden;
+  border-radius: 0.9rem; background: var(--cream-2);
+  aspect-ratio: 3 / 4;
+}
+.frames__item--tall { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+.frames__item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.8s var(--ease);
+}
+.frames__item:hover img { transform: scale(1.04); }
+.frames__cap {
+  position: absolute; left: 0.9rem; bottom: 0.8rem;
+  font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: #fff; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.4s, transform 0.4s var(--ease);
+}
+.frames__item:hover .frames__cap, .frames__item:focus-visible .frames__cap { opacity: 1; transform: none; }
+.frames__actions { margin-top: clamp(2rem, 5vh, 3rem); display: flex; flex-wrap: wrap; gap: 1rem; }
+@media (max-width: 900px) {
+  .frames__grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+  .frames__item--tall { grid-column: span 2; grid-row: span 1; aspect-ratio: 4 / 3; }
+}
+
 /* ── Experience: LinkedIn link ── */
 .xp__linkedin {
   display: inline-flex; align-items: center; gap: 0.6rem;
